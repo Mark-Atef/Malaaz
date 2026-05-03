@@ -49,18 +49,12 @@ export default function Navbar() {
     <>
       <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
         <div className={styles.inner}>
-
-          {/* Wordmark */}
           <Link href={`/${locale}`} className={styles.logo} aria-label="Malaaz">
             <span className={styles.logoText}>Malaaz</span>
-            <span className={styles.logoUnderline} />
+            <span className={styles.logoLine} />
           </Link>
 
-          {/* Desktop nav */}
-          <nav
-            className={styles.desktopNav}
-            aria-label={isRTL ? 'روابط التنقل' : 'Site links'}
-          >
+          <nav className={styles.desktopNav} aria-label={isRTL ? 'روابط التنقل' : 'Site links'}>
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} className={styles.navLink}>
                 {link.label}
@@ -68,61 +62,50 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Desktop actions */}
           <div className={styles.desktopActions}>
             <button
               type="button"
               onClick={toggleLocale}
-              className={styles.langToggle}
+              className={styles.langBtn}
               aria-label={locale === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'}
             >
               {locale === 'ar' ? 'EN' : 'ع'}
             </button>
-
-            <Link href={`/${locale}#early-access`} className={styles.ctaBtn}>
+            <Link href={`/${locale}#early-access`} className={styles.cta}>
               {t('getEarlyAccess')}
             </Link>
           </div>
 
-          {/* Mobile actions */}
           <div className={styles.mobileActions}>
             <button
               type="button"
               onClick={toggleLocale}
-              className={styles.langToggle}
+              className={styles.langBtn}
               aria-label={locale === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'}
             >
               {locale === 'ar' ? 'EN' : 'ع'}
             </button>
-
             <button
               type="button"
               onClick={() => setMenuOpen((p) => !p)}
               className={styles.hamburger}
               aria-expanded={menuOpen}
               aria-controls="mobile-menu"
-              aria-label={menuOpen
-                ? (isRTL ? 'إغلاق القائمة' : 'Close menu')
-                : (isRTL ? 'فتح القائمة' : 'Open menu')
-              }
+              aria-label={menuOpen ? (isRTL ? 'إغلاق' : 'Close') : (isRTL ? 'القائمة' : 'Menu')}
             >
-              {menuOpen
-                ? <X size={18} strokeWidth={1.75} />
-                : <Menu size={18} strokeWidth={1.75} />
-              }
+              {menuOpen ? <X size={18} strokeWidth={1.75} /> : <Menu size={18} strokeWidth={1.75} />}
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile menu */}
       <div
         id="mobile-menu"
         ref={menuRef}
-        className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ''}`}
+        className={`${styles.mobileMenu} ${menuOpen ? styles.open : ''}`}
       >
         <div className={styles.mobileDivider} />
-        <div className={styles.mobileInner}>
+        <nav className={styles.mobileNav} aria-label={isRTL ? 'قائمة التنقل' : 'Navigation menu'}>
           {navLinks.map((link, i) => (
             <Link
               key={link.href}
@@ -131,10 +114,9 @@ export default function Navbar() {
               className={`${styles.mobileLink} reveal reveal-delay-${i + 1} ${menuOpen ? 'visible' : ''}`}
             >
               <span>{link.label}</span>
-              <span className={styles.mobileLinkArrow}>{isRTL ? '←' : '→'}</span>
+              <span className={styles.arrow}>{isRTL ? '←' : '→'}</span>
             </Link>
           ))}
-
           <Link
             href={`/${locale}#early-access`}
             onClick={closeMenu}
@@ -142,7 +124,7 @@ export default function Navbar() {
           >
             {t('getEarlyAccess')}
           </Link>
-        </div>
+        </nav>
       </div>
     </>
   );

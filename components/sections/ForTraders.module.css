@@ -1,0 +1,149 @@
+.section {
+  background-color: var(--color-white);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-16);
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.title {
+  font-size: clamp(1.875rem, 4vw, 2.75rem);
+  font-weight: 300;
+  color: var(--color-obsidian);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-10);
+  border-radius: var(--radius-xl);
+}
+
+.cardDark {
+  background-color: var(--color-obsidian);
+  color: var(--color-ivory);
+}
+
+.cardLight {
+  background-color: var(--color-gold-light);
+  border: 1px solid var(--color-chalk);
+}
+
+.cardBadge {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 300;
+  color: oklch(1 0 0 / 0.15);
+  line-height: 1;
+}
+
+.cardBadgeLight {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--color-chalk);
+  line-height: 1;
+}
+
+.priceBadge {
+  display: inline-flex;
+  align-items: center;
+  height: 1.75rem;
+  padding-inline: var(--space-3);
+  border-radius: var(--radius-full);
+  background-color: var(--color-gold);
+  color: var(--color-ivory);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  width: fit-content;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--color-ivory);
+}
+
+.cardTitleDark {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--color-obsidian);
+}
+
+.cardDesc {
+  font-size: 1rem;
+  color: oklch(0.98 0.003 80 / 0.65);
+  line-height: 1.7;
+  flex: 1;
+}
+
+.cardDescDark {
+  font-size: 1rem;
+  color: var(--color-stone);
+  line-height: 1.7;
+  flex: 1;
+}
+
+.cardCtaDark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.75rem;
+  padding-inline: var(--space-6);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-obsidian);
+  background-color: var(--color-ivory);
+  width: fit-content;
+  transition: background-color var(--ease-fast);
+}
+
+.cardCtaDark:hover { background-color: var(--color-gold-light); }
+
+.cardCtaGold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.75rem;
+  padding-inline: var(--space-6);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-ivory);
+  background-color: var(--color-gold);
+  box-shadow: var(--shadow-gold);
+  width: fit-content;
+  transition: background-color var(--ease-fast);
+}
+
+.cardCtaGold:hover { background-color: var(--color-gold-dark); }

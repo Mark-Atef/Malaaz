@@ -1,0 +1,190 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--color-ivory);
+  padding-top: var(--navbar-h);
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orb {
+  position: absolute;
+  top: -20%;
+  inset-inline-end: -10%;
+  width: 60vw;
+  max-width: 700px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    oklch(0.64 0.12 68 / 0.12) 0%,
+    oklch(0.64 0.12 68 / 0.04) 50%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  padding-block: var(--space-24);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 680px;
+}
+
+/* Eyebrow */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-gold);
+  flex-shrink: 0;
+}
+
+/* Headline */
+.headline {
+  font-size: clamp(2.75rem, 7vw, 5.5rem);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  color: var(--color-obsidian);
+  display: flex;
+  flex-direction: column;
+  gap: 0.1em;
+}
+
+.headlineLine {
+  display: block;
+}
+
+.headlineAccent {
+  font-style: italic;
+  color: var(--color-gold);
+}
+
+/* Sub */
+.sub {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  color: var(--color-stone);
+  line-height: 1.75;
+  max-width: 520px;
+}
+
+/* CTAs */
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+  margin-top: var(--space-2);
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  padding-inline: var(--space-8);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--color-ivory);
+  background-color: var(--color-gold);
+  box-shadow: var(--shadow-gold);
+  transition: background-color var(--ease-fast), box-shadow var(--ease-fast), transform var(--ease-fast);
+}
+
+.ctaPrimary:hover {
+  background-color: var(--color-gold-dark);
+  box-shadow: 0 6px 28px oklch(0.64 0.12 68 / 0.5);
+  transform: translateY(-1px);
+}
+
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  padding-inline: var(--space-8);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--color-obsidian);
+  border: 1px solid var(--color-chalk);
+  transition: border-color var(--ease-fast), background-color var(--ease-fast);
+}
+
+.ctaSecondary:hover {
+  border-color: var(--color-obsidian);
+  background-color: var(--color-gold-light);
+}
+
+/* App badges */
+.badges {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.badgeLabel {
+  font-size: 0.75rem;
+  color: var(--color-stone);
+  letter-spacing: 0.06em;
+}
+
+.badgeRow {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.appBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 2.5rem;
+  padding-inline: var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-ivory);
+  background-color: var(--color-obsidian);
+  transition: background-color var(--ease-fast);
+}
+
+.appBadge:hover { background-color: oklch(0.20 0.008 62); }
+
+@media (max-width: 640px) {
+  .content { padding-block: var(--space-16); }
+  .ctas { flex-direction: column; align-items: stretch; }
+  .ctaPrimary, .ctaSecondary { justify-content: center; }
+}

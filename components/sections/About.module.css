@@ -1,0 +1,138 @@
+.section {
+  background-color: var(--color-white);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-12);
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .inner { grid-template-columns: 1fr 1.6fr; gap: var(--space-20); }
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 300;
+  color: var(--color-obsidian);
+  line-height: 1.15;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.story {
+  font-size: 1.0625rem;
+  color: var(--color-stone);
+  line-height: 1.8;
+}
+
+.pillars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-8);
+  background-color: var(--color-gold-light);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-chalk);
+}
+
+@media (min-width: 640px) {
+  .pillars {
+    flex-direction: row;
+    gap: 0;
+  }
+}
+
+.pillar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 1;
+  padding-inline: var(--space-4);
+}
+
+.pillar:first-child { padding-inline-start: 0; }
+.pillar:last-child { padding-inline-end: 0; }
+
+.pillarLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.pillarText {
+  font-size: 0.9375rem;
+  color: var(--color-obsidian);
+  line-height: 1.65;
+}
+
+.divider {
+  width: 1px;
+  background-color: var(--color-chalk);
+  flex-shrink: 0;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .divider { display: block; }
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.teamLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-stone);
+}
+
+.teamAvatars {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--color-obsidian);
+  color: var(--color-ivory);
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-white);
+  margin-inline-start: -8px;
+  transition: transform var(--ease-fast);
+}
+
+.avatar:first-child { margin-inline-start: 0; }
+.avatar:hover { transform: translateY(-2px); }

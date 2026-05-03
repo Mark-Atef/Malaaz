@@ -1,0 +1,118 @@
+.section {
+  background-color: var(--color-ivory);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-16);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  color: var(--color-obsidian);
+  max-width: 600px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--color-stone);
+  max-width: 500px;
+  line-height: 1.75;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-8);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-chalk);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--ease-normal), box-shadow var(--ease-normal), transform var(--ease-normal);
+}
+
+.card:hover {
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-2px);
+}
+
+.iconWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-gold-light);
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cardTitle {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-obsidian);
+}
+
+.cardDesc {
+  font-size: 0.875rem;
+  color: var(--color-stone);
+  line-height: 1.65;
+  flex: 1;
+}
+
+.solution {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-start;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-chalk);
+}
+
+.solutionDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-gold);
+  flex-shrink: 0;
+  margin-top: 0.4em;
+}
+
+.solutionText {
+  font-size: 0.8125rem;
+  color: var(--color-gold);
+  font-weight: 500;
+  line-height: 1.5;
+}

@@ -7,13 +7,126 @@
   },
   "hero": {
     "eyebrow": "AI-Powered Interior Finishing",
-    "headline": "Your apartment, engineered to perfection.",
+    "headline": "Your apartment,\nengineered to perfection.",
     "subheadline": "From bare walls to a finished home — guided by AI, backed by trusted local traders across Egypt.",
     "ctaPrimary": "Get Early Access",
-    "ctaSecondary": "Join our Community"
+    "ctaSecondary": "Join our Community",
+    "appStore": "App Store",
+    "googlePlay": "Google Play",
+    "badge": "Coming soon on"
   },
-  "meta": {
-    "title": "Malaaz — AI-Powered Interior Finishing",
-    "description": "From bare walls to a finished home — guided by AI, backed by trusted local traders across Egypt."
+  "numbers": {
+    "title": "The Market in Numbers",
+    "stat1Value": "3M+",
+    "stat1Label": "unfinished apartments in Egypt",
+    "stat2Value": "EGP 200B",
+    "stat2Label": "annual finishing market size",
+    "stat3Value": "70%",
+    "stat3Label": "of homeowners distrust contractor quotes",
+    "stat4Value": "30%",
+    "stat4Label": "of materials wasted due to wrong purchases"
+  },
+  "problem": {
+    "eyebrow": "The Problem We Solve",
+    "title": "Egypt's finishing market is broken",
+    "subtitle": "Homeowners lose time and money every day because of four real problems.",
+    "card1Title": "Commercial Fraud",
+    "card1Desc": "Counterfeit cables and substandard wiring cause fires and failures years later.",
+    "card1Solution": "Every product on Malaaz passes certified quality tests before it is listed.",
+    "card2Title": "Technical Ignorance",
+    "card2Desc": "Customers can't tell 2.5mm from 4mm wire and rely entirely on the contractor's word.",
+    "card2Solution": "The AI Engineer calculates exact specs and prevents manipulation.",
+    "card3Title": "Price Chaos",
+    "card3Desc": "The same product sells at one price in Ataba and a much higher price in Nasr City.",
+    "card3Solution": "Transparent pricing from the closest verified trader in your area.",
+    "card4Title": "Budget Terror",
+    "card4Desc": "The fear that costs spiral out of control and savings disappear.",
+    "card4Solution": "The Cost Simulator shows your total finishing cost before you buy a single item."
+  },
+  "howItWorks": {
+    "eyebrow": "How Malaaz Works",
+    "title": "Three steps from bare walls to a finished home",
+    "step1Num": "1",
+    "step1Title": "Upload your room",
+    "step1Desc": "Share a photo of your room or floor plan. The AI analyzes the space and layout.",
+    "step2Num": "2",
+    "step2Title": "AI engineers your plan",
+    "step2Desc": "Calculates lighting distribution, socket placement, exact specifications, and picks compatible products.",
+    "step3Num": "3",
+    "step3Title": "Buy from verified traders",
+    "step3Desc": "A ready cart at the best prices from the closest verified traders in your area."
+  },
+  "traders": {
+    "eyebrow": "For Traders",
+    "title": "Join Malaaz as a Trader",
+    "bigTitle": "Large Distributor?",
+    "bigDesc": "Reach millions of homeowners across Egypt without spending on marketing.",
+    "bigCta": "Talk to our team",
+    "smallTitle": "Local Shop?",
+    "smallDesc": "Free POS and inventory management system for your shop, plus visibility on Malaaz in front of customers.",
+    "smallCta": "Register your shop",
+    "smallBadge": "500 EGP / month"
+  },
+  "lab": {
+    "eyebrow": "Quality Guarantee",
+    "title": "The Lab",
+    "subtitle": "We do not sell a product we have not tested. Every week we run live tests on products — streamed publicly.",
+    "test1": "Burn Test",
+    "test2": "Copper Thickness Measurement",
+    "test3": "Electrical Load Test",
+    "test4": "Mechanical Pressure Test",
+    "cta": "Watch our live stream"
+  },
+  "partners": {
+    "eyebrow": "Our Partners",
+    "title": "They trust Malaaz"
+  },
+  "about": {
+    "eyebrow": "Who We Are",
+    "title": "Building the future of finishing in Egypt",
+    "story": "Malaaz started from real frustration — we watched homeowners lose thousands because of dishonest contractors, counterfeit products, and chaotic pricing. We decided to solve it at the root: with technology, transparency, and verified traders.",
+    "visionLabel": "Our Vision",
+    "vision": "Every Egyptian able to finish their home with confidence, quality, and fair pricing.",
+    "missionLabel": "Our Mission",
+    "mission": "Digitize Egypt's finishing market by connecting homeowners with verified traders and AI that guides them every step of the way.",
+    "team": "Founding Team"
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Have a question?",
+    "q1": "When will the app be available?",
+    "a1": "We are in active development and targeting the first beta launch in 2025. Register now to be among the first users.",
+    "q2": "Is it free for homeowners?",
+    "a2": "Yes. Homeowners use the AI assistant and marketplace completely free.",
+    "q3": "How do I know the products are genuine?",
+    "a3": "Every product on Malaaz passes documented quality tests. We run burn, mechanical, and electrical tests weekly and livestream them.",
+    "q4": "Can small local traders join?",
+    "a4": "Absolutely. A local trader gets a full POS and inventory system for just 500 EGP per month, with free visibility on the platform.",
+    "q5": "Which areas does Malaaz cover?",
+    "a5": "We start with Greater Cairo then expand to all governorates. Our goal is full Egypt coverage within the first year.",
+    "q6": "Does the AI support Arabic?",
+    "a6": "Yes. Malaaz is designed from the ground up for the Egyptian market — Arabic-first interface and AI that understands local context.",
+    "q7": "How does the trader system work without internet?",
+    "a7": "The POS works offline for up to 72 hours. Data syncs automatically to the cloud when the connection returns.",
+    "q8": "What makes Malaaz different from a regular shopping site?",
+    "a8": "Malaaz is not a store. It is a smart engineer that calculates your exact needs then connects you with the best product and closest trader. A regular store only sells — Malaaz guides, saves, and guarantees."
+  },
+  "earlyAccess": {
+    "eyebrow": "Launching Soon",
+    "title": "Be Among the First",
+    "subtitle": "Register now for exclusive early access and special founder offers.",
+    "placeholder": "Your email address",
+    "ctaHomeowner": "Register as homeowner",
+    "ctaTrader": "Register as trader",
+    "community": "Join our WhatsApp community",
+    "successMsg": "Thank you! We will be in touch soon."
+  },
+  "footer": {
+    "tagline": "Building the future of finishing in Egypt.",
+    "links": "Links",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "rights": "All rights reserved"
   }
 }
