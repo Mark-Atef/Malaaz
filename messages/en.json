@@ -1,0 +1,19 @@
+{
+  "nav": {
+    "howItWorks": "How it works",
+    "forTraders": "For Traders",
+    "about": "About",
+    "getEarlyAccess": "Get Early Access"
+  },
+  "hero": {
+    "eyebrow": "AI-Powered Interior Finishing",
+    "headline": "Your apartment, engineered to perfection.",
+    "subheadline": "From bare walls to a finished home — guided by AI, backed by trusted local traders across Egypt.",
+    "ctaPrimary": "Get Early Access",
+    "ctaSecondary": "Join our Community"
+  },
+  "meta": {
+    "title": "Malaaz — AI-Powered Interior Finishing",
+    "description": "From bare walls to a finished home — guided by AI, backed by trusted local traders across Egypt."
+  }
+}
