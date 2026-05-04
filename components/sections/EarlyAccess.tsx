@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { MessageCircle } from 'lucide-react';
 import type { WaitlistFormData } from '@/types';
 import styles from './EarlyAccess.module.css';
 
@@ -101,13 +102,14 @@ export default function EarlyAccess() {
           </div>
         )}
 
-        
+        {/* ← opening tag was missing here — caused the build crash */}
+        <a
           href="https://chat.whatsapp.com/"
           target="_blank"
           rel="noopener noreferrer"
           className={`${styles.community} reveal reveal-delay-4`}
         >
-          <span aria-hidden="true">💬</span>
+          <MessageCircle size={16} strokeWidth={1.75} aria-hidden="true" />
           {t('community')}
         </a>
       </div>

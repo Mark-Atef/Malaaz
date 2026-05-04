@@ -80,12 +80,19 @@ li { list-style: none; }
   --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.14);
   --shadow-gold: 0 4px 16px oklch(0.64 0.12 68 / 0.35);
 
-  /* ── Transitions ── */
-  --transition-fast: 0.18s ease;
+  /* ── Easing & Transitions ── */
+  /* Named ease tokens — used via var(--ease-fast) etc in CSS modules */
+  --ease-fast:   0.18s ease;             
+  --ease-normal: 0.3s ease;           
+  --ease-slow:   0.5s ease;
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+ 
+  /* Legacy flat tokens kept for any direct usage */
+  --transition-fast:   0.18s ease;
   --transition-normal: 0.3s ease;
-  --transition-slow: 0.5s ease;
+  --transition-slow:   0.5s ease;
   --transition-spring: cubic-bezier(0.16, 1, 0.3, 1);
-
+ 
   /* Typography scale */
   --font-weight-normal: 400;
   --font-weight-medium: 500;

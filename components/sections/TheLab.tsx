@@ -23,7 +23,9 @@ export default function TheLab() {
               {t('title')}
             </h2>
             <p className={`${styles.sub} reveal reveal-delay-2`}>{t('subtitle')}</p>
-            
+
+            {/* ← opening tag was missing here — caused the build crash */}
+            <a
               href="https://www.youtube.com/"
               target="_blank"
               rel="noopener noreferrer"

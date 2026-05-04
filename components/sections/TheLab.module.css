@@ -55,7 +55,7 @@
 
 .cta:hover { gap: var(--space-3); }
 
-.right {}
+/* .right intentionally removed — empty rulesets are a lint error */
 
 .tests {
   display: flex;
