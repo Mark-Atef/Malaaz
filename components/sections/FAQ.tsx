@@ -12,14 +12,22 @@ export default function FAQ() {
   const t = useTranslations('faq');
   const [open, setOpen] = useState<string | null>(null);
 
-  const toggle = (key: string) => setOpen((prev) => (prev === key ? null : key));
+  const toggle = (key: string) =>
+    setOpen((prev) => (prev === key ? null : key));
 
   return (
-    <section className={`${styles.section} section`} id="faq" aria-labelledby="faq-heading">
+    <section
+      className={`${styles.section} section`}
+      id="faq"
+      aria-labelledby="faq-heading"
+    >
       <div className="container">
         <div className={styles.header}>
           <span className={`${styles.eyebrow} reveal`}>{t('eyebrow')}</span>
-          <h2 id="faq-heading" className={`${styles.title} reveal reveal-delay-1`}>
+          <h2
+            id="faq-heading"
+            className={`${styles.title} reveal reveal-delay-1`}
+          >
             {t('title')}
           </h2>
         </div>
@@ -32,6 +40,7 @@ export default function FAQ() {
                 key={key}
                 className={`${styles.item} ${isOpen ? styles.itemOpen : ''} reveal reveal-delay-${Math.min(i + 1, 4)}`}
               >
+                {/* Question button */}
                 <dt>
                   <button
                     type="button"
@@ -42,8 +51,10 @@ export default function FAQ() {
                     id={`faq-question-${key}`}
                   >
                     <span>{t(key)}</span>
-                    <span className={styles.icon} aria-hidden="true">
-                      {isOpen ? <Minus size={16} strokeWidth={1.75} /> : <Plus size={16} strokeWidth={1.75} />}
+                    <span className={`${styles.icon} ${isOpen ? styles.iconOpen : ''}`} aria-hidden="true">
+                      {isOpen
+                        ? <Minus size={16} strokeWidth={1.75} />
+                        : <Plus size={16} strokeWidth={1.75} />}
                     </span>
                   </button>
                 </dt>
@@ -51,8 +62,8 @@ export default function FAQ() {
                   id={`faq-answer-${key}`}
                   role="region"
                   aria-labelledby={`faq-question-${key}`}
-                  className={styles.answer}
-                  hidden={!isOpen}
+                  aria-hidden={!isOpen}
+                  className={`${styles.answer} ${isOpen ? styles.answerOpen : ''}`}
                 >
                   <p className={styles.answerText}>{t(key.replace('q', 'a') as never)}</p>
                 </dd>

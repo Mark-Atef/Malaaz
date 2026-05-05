@@ -1,3 +1,5 @@
+/* components/sections/ForTraders.module.css */
+
 .section {
   background-color: var(--color-white);
 }
@@ -41,32 +43,43 @@
   gap: var(--space-5);
   padding: var(--space-10);
   border-radius: var(--radius-xl);
+  position: relative;
+  overflow: hidden;
 }
 
+/* ── Card 01 — Dark (obsidian) ── */
 .cardDark {
   background-color: var(--color-obsidian);
   color: var(--color-ivory);
+  border: 1px solid oklch(1 0 0 / 0.08);
 }
 
+/* ── Card 02 — Light (ivory + gold accent) ── */
 .cardLight {
-  background-color: var(--color-gold-light);
-  border: 1px solid var(--color-chalk);
+  background-color: var(--color-ivory);
+  border: 1.5px solid var(--color-chalk);
 }
 
+/* Badge numbers — was 15% white opacity (invisible on dark, invisible on light) */
+/* Fixed: use explicit visible values per card variant */
 .cardBadge {
   font-family: var(--font-display);
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 300;
-  color: oklch(1 0 0 / 0.15);
+  /* On dark card: visible warm white */
+  color: oklch(1 0 0 / 0.22);
   line-height: 1;
+  user-select: none;
 }
 
 .cardBadgeLight {
   font-family: var(--font-display);
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 300;
-  color: var(--color-chalk);
+  /* On light card: visible obsidian tint */
+  color: oklch(0.13 0.008 62 / 0.12);
   line-height: 1;
+  user-select: none;
 }
 
 .priceBadge {
@@ -83,27 +96,33 @@
   width: fit-content;
 }
 
+/* Title on dark card */
 .cardTitle {
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 300;
   color: var(--color-ivory);
+  line-height: 1.2;
 }
 
+/* Title on light card */
 .cardTitleDark {
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 300;
   color: var(--color-obsidian);
+  line-height: 1.2;
 }
 
+/* Description on dark card */
 .cardDesc {
   font-size: 1rem;
-  color: oklch(0.98 0.003 80 / 0.65);
+  color: oklch(0.98 0.003 80 / 0.7);
   line-height: 1.7;
   flex: 1;
 }
 
+/* Description on light card */
 .cardDescDark {
   font-size: 1rem;
   color: var(--color-stone);
@@ -111,6 +130,7 @@
   flex: 1;
 }
 
+/* CTA on dark card — ivory pill */
 .cardCtaDark {
   display: inline-flex;
   align-items: center;
@@ -121,14 +141,28 @@
   font-size: 0.875rem;
   font-weight: 600;
   text-decoration: none;
+  /* Explicit color on every state — never let it inherit */
   color: var(--color-obsidian);
   background-color: var(--color-ivory);
+  border: 1px solid transparent;
   width: fit-content;
-  transition: background-color var(--ease-fast);
+  transition:
+    background-color var(--ease-fast),
+    color var(--ease-fast),
+    border-color var(--ease-fast);
 }
 
-.cardCtaDark:hover { background-color: var(--color-gold-light); }
+.cardCtaDark:hover {
+  background-color: var(--color-gold-light);
+  color: var(--color-obsidian); /* explicit — prevents gold bleed */
+  border-color: var(--color-gold);
+}
 
+/* CTA on light card — gold pill
+   BUG WAS HERE: color was never set explicitly, so on hover
+   background changed to --color-gold-dark but text had no declared
+   color, so it fell back to the body color (obsidian) against gold-dark
+   = near-invisible. Fixed by always declaring color on both states. */
 .cardCtaGold {
   display: inline-flex;
   align-items: center;
@@ -139,11 +173,18 @@
   font-size: 0.875rem;
   font-weight: 600;
   text-decoration: none;
-  color: var(--color-ivory);
+  color: var(--color-ivory);           /* explicit on default */
   background-color: var(--color-gold);
   box-shadow: var(--shadow-gold);
   width: fit-content;
-  transition: background-color var(--ease-fast);
+  transition:
+    background-color var(--ease-fast),
+    color var(--ease-fast),
+    box-shadow var(--ease-fast);
 }
 
-.cardCtaGold:hover { background-color: var(--color-gold-dark); }
+.cardCtaGold:hover {
+  background-color: var(--color-gold-dark);
+  color: var(--color-ivory);           /* explicit on hover — was the bug */
+  box-shadow: 0 4px 20px oklch(0.64 0.12 68 / 0.45);
+}

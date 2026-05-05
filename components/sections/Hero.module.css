@@ -1,3 +1,5 @@
+/* components/sections/Hero.module.css */
+
 .hero {
   position: relative;
   min-height: 100vh;
@@ -8,6 +10,7 @@
   padding-top: var(--navbar-h);
 }
 
+/* ── Decorative layers ── */
 .grain {
   position: absolute;
   inset: 0;
@@ -20,30 +23,43 @@
 
 .orb {
   position: absolute;
-  top: -20%;
-  inset-inline-end: -10%;
-  width: 60vw;
-  max-width: 700px;
+  top: -15%;
+  inset-inline-end: -5%;
+  width: 55vw;
+  max-width: 680px;
   aspect-ratio: 1;
   border-radius: 50%;
   background: radial-gradient(
     circle at center,
-    oklch(0.64 0.12 68 / 0.12) 0%,
-    oklch(0.64 0.12 68 / 0.04) 50%,
+    oklch(0.64 0.12 68 / 0.10) 0%,
+    oklch(0.64 0.12 68 / 0.03) 55%,
     transparent 70%
   );
   pointer-events: none;
   z-index: 0;
 }
 
+/* ── Content wrapper — full width, centered, two rows ── */
 .content {
   position: relative;
   z-index: 1;
-  padding-block: var(--space-24);
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
-  max-width: 680px;
+  align-items: center;            /* center the entire column */
+  text-align: center;             /* center all text */
+  gap: var(--space-16);
+  padding-block: var(--space-24) var(--space-20);
+  width: 100%;
+}
+
+/* ── Top block ── */
+.top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+  width: 100%;
+  max-width: 860px;               /* wider than old 680px */
 }
 
 /* Eyebrow */
@@ -68,13 +84,14 @@
 
 /* Headline */
 .headline {
-  font-size: clamp(2.75rem, 7vw, 5.5rem);
+  font-size: clamp(3rem, 8vw, 6rem);   /* bigger than 5.5rem max before */
   font-weight: 300;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   color: var(--color-obsidian);
   display: flex;
   flex-direction: column;
-  gap: 0.1em;
+  gap: 0.05em;
+  line-height: 1.05;
 }
 
 .headlineLine {
@@ -86,20 +103,30 @@
   color: var(--color-gold);
 }
 
-/* Sub */
-.sub {
-  font-size: clamp(1rem, 2vw, 1.125rem);
-  color: var(--color-stone);
-  line-height: 1.75;
-  max-width: 520px;
+/* Platform subtitle — Arabic descriptor */
+.platformSubtitle {
+  font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
+  color: var(--color-obsidian);
+  font-weight: 500;
+  line-height: 1.7;
+  max-width: 700px;
+  opacity: 0.85;
 }
 
-/* CTAs */
+/* Subheadline */
+.sub {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  color: var(--color-stone);
+  line-height: 1.75;
+  max-width: 600px;
+}
+
+/* ── CTAs ── */
 .ctas {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: var(--space-3);
-  align-items: center;
   margin-top: var(--space-2);
 }
 
@@ -137,54 +164,172 @@
   font-weight: 500;
   text-decoration: none;
   color: var(--color-obsidian);
-  border: 1px solid var(--color-chalk);
+  border: 1.5px solid var(--color-chalk);
   transition: border-color var(--ease-fast), background-color var(--ease-fast);
 }
 
 .ctaSecondary:hover {
-  border-color: var(--color-obsidian);
+  border-color: var(--color-gold);
   background-color: var(--color-gold-light);
 }
 
-/* App badges */
+/* ── App badges — rebuilt ── */
 .badges {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
-  margin-top: var(--space-4);
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
 }
 
 .badgeLabel {
   font-size: 0.75rem;
   color: var(--color-stone);
   letter-spacing: 0.06em;
+  font-weight: 500;
 }
 
 .badgeRow {
   display: flex;
   gap: var(--space-3);
   flex-wrap: wrap;
+  justify-content: center;
 }
 
+/* Each store badge is a pill with icon + two-line text */
 .appBadge {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  height: 2.5rem;
-  padding-inline: var(--space-4);
-  border-radius: var(--radius-md);
+  gap: var(--space-3);
+  min-width: 160px;
+  height: 52px;
+  padding-inline: var(--space-5);
+  border-radius: var(--radius-lg);
   font-size: 0.8125rem;
-  font-weight: 600;
   text-decoration: none;
   color: var(--color-ivory);
   background-color: var(--color-obsidian);
-  transition: background-color var(--ease-fast);
+  border: 1px solid oklch(1 0 0 / 0.1);
+  transition: background-color var(--ease-fast), transform var(--ease-fast);
 }
 
-.appBadge:hover { background-color: oklch(0.20 0.008 62); }
+.appBadge:hover {
+  background-color: oklch(0.22 0.008 62);
+  transform: translateY(-1px);
+}
 
+.badgeIcon {
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.badgeText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+}
+
+.badgeSub {
+  font-size: 0.625rem;
+  font-weight: 400;
+  opacity: 0.7;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.badgeName {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+/* RTL: badge text align flips */
+html[dir="rtl"] .badgeText {
+  align-items: flex-end;
+}
+
+/* ── Feature grid — 4 cards ── */
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .featureGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.featureCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+  padding: var(--space-6) var(--space-5);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-chalk);
+  border-radius: var(--radius-lg);
+  transition:
+    border-color var(--ease-fast),
+    box-shadow var(--ease-fast),
+    transform var(--ease-fast);
+  /* staggered entrance delay driven by inline --card-delay */
+  transition-delay: var(--card-delay, 0s);
+}
+
+.featureCard:hover {
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-3px);
+}
+
+.featureIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-gold-light);
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.featureTitle {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-obsidian);
+}
+
+.featureDesc {
+  font-size: 0.8125rem;
+  color: var(--color-stone);
+  line-height: 1.6;
+}
+
+/* ── Mobile adjustments ── */
 @media (max-width: 640px) {
-  .content { padding-block: var(--space-16); }
+  .content { padding-block: var(--space-16) var(--space-12); }
   .ctas { flex-direction: column; align-items: stretch; }
-  .ctaPrimary, .ctaSecondary { justify-content: center; }
+  .ctaPrimary,
+  .ctaSecondary { justify-content: center; }
+  .appBadge { min-width: 140px; }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .ctaPrimary:hover,
+  .ctaSecondary:hover,
+  .appBadge:hover,
+  .featureCard:hover {
+    transform: none;
+  }
 }

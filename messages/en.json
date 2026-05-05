@@ -8,12 +8,23 @@
   "hero": {
     "eyebrow": "AI-Powered Interior Finishing",
     "headline": "Your apartment,\nengineered to perfection.",
+    "platformSubtitle": "An integrated smart platform for managing electrical, finishing and décor requests — with an AI technical assistant.",
     "subheadline": "From bare walls to a finished home — guided by AI, backed by trusted local traders across Egypt.",
     "ctaPrimary": "Get Early Access",
     "ctaSecondary": "Join our Community",
     "appStore": "App Store",
     "googlePlay": "Google Play",
-    "badge": "Coming soon on"
+    "badge": "Coming soon on",
+    "badgeSubApple": "Download on the",
+    "badgeSubGoogle": "Get it on",
+    "feature1Title": "Smart Analysis",
+    "feature1Desc": "AI analysis of photos and measurements",
+    "feature2Title": "Precise Estimates",
+    "feature2Desc": "Exact quantities and specifications calculated",
+    "feature3Title": "Quote Comparison",
+    "feature3Desc": "Compare supplier and contractor prices",
+    "feature4Title": "Field Service",
+    "feature4Desc": "Request an engineer site visit"
   },
   "numbers": {
     "title": "The Market in Numbers",
@@ -28,7 +39,7 @@
   },
   "problem": {
     "eyebrow": "The Problem We Solve",
-    "title": "Egypt's finishing market is broken",
+    "title": "Egypt's finishing market has real problems",
     "subtitle": "Homeowners lose time and money every day because of four real problems.",
     "card1Title": "Commercial Fraud",
     "card1Desc": "Counterfeit cables and substandard wiring cause fires and failures years later.",
@@ -127,6 +138,8 @@
     "legal": "Legal",
     "privacy": "Privacy Policy",
     "terms": "Terms & Conditions",
-    "rights": "All rights reserved"
+    "rights": "All rights reserved",
+    "contact": "Contact",
+    "emailLabel": "Email"
   }
 }
