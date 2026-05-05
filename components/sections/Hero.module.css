@@ -151,6 +151,7 @@
   background-color: var(--color-gold-dark);
   box-shadow: 0 6px 28px oklch(0.64 0.12 68 / 0.5);
   transform: translateY(-1px);
+  color: var(--color-gold-dark);
 }
 
 .ctaSecondary {
