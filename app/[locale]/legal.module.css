@@ -1,0 +1,54 @@
+/* app/[locale]/legal.module.css */
+/* Shared by privacy/page.tsx and terms/page.tsx */
+
+.page {
+  background-color: var(--color-ivory);
+  padding-top: calc(var(--navbar-h) + var(--space-16));
+  padding-bottom: var(--space-24);
+  min-height: 100dvh;
+}
+
+.content {
+  max-width: 760px;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  color: var(--color-obsidian);
+  margin-bottom: var(--space-2);
+}
+
+.updated {
+  font-size: 0.875rem;
+  color: var(--color-stone);
+  margin-bottom: var(--space-12);
+}
+
+.section {
+  margin-bottom: var(--space-8);
+}
+
+.section h2 {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-obsidian);
+  margin-bottom: var(--space-3);
+}
+
+.section p {
+  font-size: 0.9375rem;
+  color: var(--color-stone);
+  line-height: 1.8;
+}
+
+.section a {
+  color: var(--color-gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.section a:hover {
+  color: var(--color-gold-dark);
+}

@@ -1,11 +1,11 @@
 // app/[locale]/page.tsx
 import Hero from '@/components/sections/Hero';
-import MarketNumbers from '@/components/sections/MarketNumbers';
 import Problem from '@/components/sections/Problem';
 import HowItWorks from '@/components/sections/HowItWorks';
+import About from '@/components/sections/About';
 import ForTraders from '@/components/sections/ForTraders';
 import TheLab from '@/components/sections/TheLab';
-import About from '@/components/sections/About';
+import MarketNumbers from '@/components/sections/MarketNumbers';
 import FAQ from '@/components/sections/FAQ';
 import EarlyAccess from '@/components/sections/EarlyAccess';
 import ScrollRevealInit from '@/components/common/ScrollRevealInit';
@@ -15,12 +15,12 @@ export default function Home() {
     <main className="page-enter">
       <ScrollRevealInit />
       <Hero />
-      <MarketNumbers />
       <Problem />
       <HowItWorks />
+      <About />
       <ForTraders />
       <TheLab />
-      <About />
+      <MarketNumbers />
       <FAQ />
       <EarlyAccess />
     </main>

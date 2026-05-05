@@ -27,15 +27,23 @@
     "feature4Desc": "Request an engineer site visit"
   },
   "numbers": {
-    "title": "The Market in Numbers",
-    "stat1Value": "3M+",
-    "stat1Label": "unfinished apartments in Egypt",
-    "stat2Value": "EGP 200B",
-    "stat2Label": "annual finishing market size",
-    "stat3Value": "70%",
-    "stat3Label": "of homeowners distrust contractor quotes",
-    "stat4Value": "30%",
-    "stat4Label": "of materials wasted due to wrong purchases"
+    "eyebrow": "The Market in Numbers",
+    "title": "Egypt's finishing market — a real opportunity",
+    "subtitle": "Numbers that prove the scale of the problem and why Malaaz matters now.",
+    "homeownerLabel": "For Homeowners",
+    "h1Value": "3M+",
+    "h1Label": "unfinished apartments in Egypt",
+    "h2Value": "70%",
+    "h2Label": "of homeowners distrust contractor quotes",
+    "h3Value": "30%",
+    "h3Label": "of materials wasted due to wrong purchases",
+    "traderLabel": "For Traders & Suppliers",
+    "t1Value": "EGP 200B",
+    "t1Label": "annual finishing market size",
+    "t2Value": "200+",
+    "t2Label": "suppliers in Egypt with no unified digital channel",
+    "t3Value": "500 EGP",
+    "t3Label": "per month for a local trader — POS, inventory, and marketplace"
   },
   "problem": {
     "eyebrow": "The Problem We Solve",

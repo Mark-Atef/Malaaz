@@ -1,4 +1,5 @@
 /* app/globals.css */
+/** biome-ignore-all lint/complexity/noImportantStyles: <> */
 
 /* =============================================
    RESET
@@ -182,7 +183,7 @@ html[dir="rtl"] .icon-flip {
 }
 
 /* =============================================
-   SCROLL REVEAL — Trella-style
+   SCROLL REVEAL
 ============================================= */
 .reveal {
   opacity: 0;
@@ -206,13 +207,21 @@ html[dir="rtl"] .icon-flip {
 /* =============================================
    PAGE ENTRY
 ============================================= */
-.page-enter {
-  animation: pageEnter 0.4s ease-out forwards;
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
+.page-enter { animation: pageEnter 0.4s ease-out forwards; }
+ 
 /* =============================================
    SHIMMER SKELETON
 ============================================= */
+
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to   { background-position:  200% 0; }
+}
+
 .shimmer {
   background: linear-gradient(
     90deg,
@@ -229,16 +238,12 @@ html[dir="rtl"] .shimmer {
 }
 
 /* =============================================
-   KEYFRAMES
+   FOCUS
 ============================================= */
-@keyframes pageEnter {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes shimmer {
-  from { background-position: -200% 0; }
-  to   { background-position:  200% 0; }
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
 }
 
 /* =============================================
