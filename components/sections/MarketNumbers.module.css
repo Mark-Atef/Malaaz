@@ -1,3 +1,5 @@
+/* components/sections/MarketNumbers.module.css */
+
 .section {
   background-color: var(--color-obsidian);
   color: var(--color-ivory);
@@ -34,14 +36,11 @@
   line-height: 1.7;
 }
 
-/* Group wrapper — label above a 3-col grid */
 .groupWrap {
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--space-8);
 }
 
-.groupWrap:last-child {
-  margin-bottom: 0;
-}
+.groupWrap:last-child { margin-bottom: 0; }
 
 .groupLabel {
   font-size: 0.6875rem;
@@ -53,7 +52,6 @@
   padding-inline-start: var(--space-1);
 }
 
-/* 3-column grid for each group */
 .grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -62,6 +60,7 @@
   border: 1px solid oklch(1 0 0 / 0.08);
   border-radius: var(--radius-lg);
   overflow: hidden;
+  list-style: none;
 }
 
 @media (min-width: 640px) {
@@ -81,14 +80,17 @@
 
 .card:hover { background-color: oklch(0.17 0.008 62); }
 
-/* Light variant for trader stats group */
-.cardLight {
-  background-color: oklch(0.15 0.008 62);
-}
-
+.cardLight { background-color: oklch(0.15 0.008 62); }
 .cardLight:hover { background-color: oklch(0.19 0.008 62); }
 
 .value {
+  /*
+    WHY --font-body (DM Sans) not --font-display (Cormorant Garamond):
+    Cormorant is an oldstyle proportional serif — numerals have uneven widths
+    and cap heights, which looks poor for bold stat numbers like "3M+".
+    DM Sans has tabular, monospaced numerals — consistent rhythm for data.
+    Arabic numerals (٣+) look correct in either font.
+  */
   font-family: var(--font-body);
   font-size: clamp(1.875rem, 4vw, 2.75rem);
   font-weight: 700;

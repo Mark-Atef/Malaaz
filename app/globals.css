@@ -184,6 +184,21 @@ html[dir="rtl"] .icon-flip {
 
 /* =============================================
    SCROLL REVEAL
+
+
+   WHY [data-revealed] instead of .visible:
+   React owns element.className. Every setState() call (e.g. opening an FAQ
+   item) triggers a re-render that calls element.className = "..." with the
+   full className string from JSX. Any class added externally by an
+   IntersectionObserver—like 'visible'—is silently overwritten, making the
+   element disappear. data-* attributes are NEVER touched by React unless they
+   appear in the JSX, so [data-revealed] survives all re-renders unchanged.
+ 
+   IMPORTANT: This file and ScrollRevealInit.tsx MUST stay in sync.
+   ScrollRevealInit sets: element.setAttribute('data-revealed', 'true')
+   This file responds to: .reveal[data-revealed="true"]
+   If you update one, update the other.
+
 ============================================= */
 .reveal {
   opacity: 0;
@@ -193,7 +208,8 @@ html[dir="rtl"] .icon-flip {
     transform 0.65s var(--ease-spring);
 }
 
-.reveal.visible {
+/* Triggered by IntersectionObserver in ScrollRevealInit.tsx */
+.reveal[data-revealed="true"] {
   opacity: 1;
   transform: translateY(0);
 }
