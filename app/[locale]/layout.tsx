@@ -1,15 +1,20 @@
-// This is the single owner of <html>, <body>, fonts, metadata, and providers.
-// Root app/layout.tsx is a passthrough — see its comments.
-import type { Metadata } from 'next';
+// app/[locale]/layout.tsx
+//
+// This layout does NOT render <html> or <body>.
+// Root app/layout.tsx owns those elements with suppressHydrationWarning.
+// LocaleHtmlAttributes sets lang, dir, and font class names on the <html>
+// element from the client after hydration — see that file for full explanation.
+
 import type { ReactNode } from 'react';
-import ScrollRevealInit from '@/components/common/ScrollRevealInit';
-import { Cormorant_Garamond, DM_Sans } from 'next/font/google';
-import { NextIntlClientProvider, hasLocale } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { routing } from '@/i18n/routing';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
+import { Cormorant_Garamond, DM_Sans } from 'next/font/google';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import ScrollRevealInit from '@/components/common/ScrollRevealInit';
+import LocaleHtmlAttributes from '@/components/common/LocaleHtmlAttributes';
 import '../globals.css';
 
 const locales = ['ar', 'en'] as const;
@@ -20,18 +25,16 @@ const cormorant = Cormorant_Garamond({
   weight: ['300', '400', '500', '600'],
   style: ['normal', 'italic'],
   variable: '--font-cormorant',
-  display: 'swap',
+  display: 'optional', // 'optional' avoids FOIT flash on slow connections
 });
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-dm-sans',
-  display: 'swap',
+  display: 'optional',
 });
 
-
-// generateMetadata: locale-aware title + description + full Open Graph + Twitter card
 export async function generateMetadata({
   params,
 }: {
@@ -39,15 +42,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const isAr = locale === 'ar';
- 
+
   const title = isAr
     ? 'ملاذ — منصة التشطيب الذكية في مصر'
     : 'Malaaz — Egypt\'s Smart Finishing Platform';
- 
+
   const description = isAr
-    ? 'منصة ذكية متكاملة لإدارة طلبات الكهرباء والتشطيبات والديكور مع مساعد تقني بالذكاء الاصطناعي. من الجدران الخام إلى بيت متكامل.'
+    ? 'منصة ذكية متكاملة لإدارة طلبات الكهرباء والتشطيبات والديكور مع مساعد تقني بالذكاء الاصطناعي'
     : 'An integrated smart platform for electrical, finishing, and décor — guided by AI, backed by verified local traders across Egypt.';
- 
+
   return {
     title: { default: title, template: `%s — Malaaz` },
     description,
@@ -81,12 +84,6 @@ export async function generateMetadata({
     robots: { index: true, follow: true },
   };
 }
- 
-
-interface LocaleLayoutProps {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
-}
 
 export default async function LocaleLayout({
   children,
@@ -96,37 +93,24 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
- 
+
   if (!locales.includes(locale as Locale)) notFound();
- 
-  const isRTL = locale === 'ar';
+
   const messages = await getMessages();
- 
+  const fontClasses = `${cormorant.variable} ${dmSans.variable}`;
+
   return (
-    <html
-      lang={locale}
-      dir={isRTL ? 'rtl' : 'ltr'}
-      suppressHydrationWarning
-      className={`${cormorant.variable} ${dmSans.variable}`}
-    >
-      <body>
-        <NextIntlClientProvider messages={messages}>
-          {/* Navbar is always visible — fixed/sticky */}
-          <Navbar />
- 
-          {/*
-            WHY no <main> here:
-            Each page (page.tsx, privacy/page.tsx, terms/page.tsx) provides
-            its own <main> element. This keeps semantics correct — one <main>
-            per document — and allows pages to set their own padding-top,
-            min-height, and aria-labelledby independently.
-          */}
-          {children}
- 
-          <Footer />
-          <ScrollRevealInit />
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider messages={messages}>
+      {/*
+        LocaleHtmlAttributes sets lang/dir/className on document.documentElement
+        after mount. suppressHydrationWarning on the root <html> element (in
+        app/layout.tsx) prevents React from throwing when these attributes appear.
+      */}
+      <LocaleHtmlAttributes locale={locale} fontClasses={fontClasses} />
+      <Navbar />
+      {children}
+      <Footer />
+      <ScrollRevealInit />
+    </NextIntlClientProvider>
   );
 }

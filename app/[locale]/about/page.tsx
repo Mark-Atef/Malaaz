@@ -82,14 +82,14 @@ export default async function AboutPage({
           <h2 id="pillars-heading" className={`${styles.sectionTitle} ${styles.centeredTitle}`}>
             {t('pillarsTitle')}
           </h2>
-          <div className={styles.pillarsGrid} role="list">
-            {pillars.map((p, i) => (
-              <article key={i} className={styles.pillarCard} role="listitem">
+          <ul className={styles.pillarsGrid}>
+            {pillars.map((p) => (
+              <li key={p.label} className={styles.pillarCard}>
                 <span className={styles.pillarLabel}>{p.label}</span>
                 <p className={styles.pillarText}>{p.text}</p>
-              </article>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
  
@@ -101,15 +101,15 @@ export default async function AboutPage({
             <h2 id="moats-heading" className={styles.moatsTitle}>{t('moatsTitle')}</h2>
             <p className={styles.moatsSub}>{t('moatsSub')}</p>
           </header>
-          <div className={styles.moatsGrid} role="list">
+          <ol className={styles.moatsGrid}>
             {moats.map((m, i) => (
-              <article key={i} className={styles.moatCard} role="listitem">
+              <li key={m.title} className={styles.moatCard}>
                 <span className={styles.moatNum} aria-hidden="true">0{i + 1}</span>
                 <h3 className={styles.moatTitle}>{m.title}</h3>
                 <p className={styles.moatDesc}>{m.desc}</p>
-              </article>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
  
@@ -120,15 +120,15 @@ export default async function AboutPage({
             {t('teamTitle')}
           </h2>
           <p className={styles.teamSub}>{t('teamSub')}</p>
-          <div className={styles.teamGrid} role="list">
+          <ul className={styles.teamGrid}>
             {team.map((member) => (
-              <article key={member.initials} className={styles.memberCard} role="listitem">
+              <li key={member.initials} className={styles.memberCard}>
                 <div className={styles.avatar} aria-hidden="true">{member.initials}</div>
                 <h3 className={styles.memberName}>{member.name}</h3>
                 <p className={styles.memberRole}>{member.role}</p>
-              </article>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
  

@@ -2,13 +2,77 @@
 import type { Metadata } from 'next';
 import styles from '../legal.module.css';
 
-export const metadata: Metadata = {
-  title: 'Terms & Conditions — Malaaz',
-  description: 'Terms of service for Malaaz.',
-  robots: { index: false, follow: false },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isAr = locale === 'ar';
+  return {
+    title: isAr ? 'الشروط والأحكام — ملاذ' : 'Terms & Conditions — Malaaz',
+    description: isAr
+      ? 'شروط استخدام منصة ملاذ'
+      : 'Terms of service for Malaaz.',
+    robots: { index: false, follow: false },
+  };
+}
 
-export default function TermsPage() {
+export default async function TermsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const isAr = locale === 'ar';
+
+  if (isAr) {
+    return (
+      <main className={styles.page} dir="rtl" lang="ar">
+        <div className={`container ${styles.content}`}>
+          <h1 className={styles.title}>الشروط والأحكام</h1>
+          <p className={styles.updated}>آخر تحديث: مايو ٢٠٢٦</p>
+
+          <section className={styles.section}>
+            <h2>القبول</h2>
+            <p>
+              بانضمامك إلى قائمة انتظار ملاذ أو استخدام أي خدمة من خدماتنا، فإنك توافق على هذه الشروط. إذا كنت لا توافق عليها، يرجى عدم استخدام خدماتنا.
+            </p>
+          </section>
+
+          <section className={styles.section}>
+            <h2>وصف الخدمة</h2>
+            <p>
+              ملاذ منصة في مرحلة ما قبل الإطلاق تربط أصحاب الشقق المصريين بتجار محليين موثوقين لمنتجات التشطيب الداخلي. المنصة قيد التطوير حالياً وقائمة الانتظار لأغراض إعلامية.
+            </p>
+          </section>
+
+          <section className={styles.section}>
+            <h2>تحديد المسؤولية</h2>
+            <p>
+              تُقدَّم ملاذ كما هي خلال مرحلة ما قبل الإطلاق. لا نقدم أي ضمانات بشأن التوفر أو الدقة أو الملاءمة لغرض معين خلال هذه الفترة.
+            </p>
+          </section>
+
+          <section className={styles.section}>
+            <h2>التغييرات</h2>
+            <p>
+              قد نحدّث هذه الشروط مع تطور المنصة. يُعدّ استمرار استخدامك للخدمة قبولاً للشروط المحدّثة.
+            </p>
+          </section>
+
+          <section className={styles.section}>
+            <h2>التواصل معنا</h2>
+            <p>
+              للاستفسارات، راسلنا على{' '}
+              <a href="mailto:hello@malaaz.com">hello@malaaz.com</a>.
+            </p>
+          </section>
+        </div>
+      </main>
+    );
+  }
+
   return (
     <main className={styles.page}>
       <div className={`container ${styles.content}`}>

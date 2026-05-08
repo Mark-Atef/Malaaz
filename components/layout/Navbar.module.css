@@ -107,24 +107,30 @@
   .desktopActions { display: flex; }
 }
 
-/* Language button */
+/* Language button — Globe icon + language label */
 .langBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   height: 2rem;
   padding-inline: var(--space-3);
   border-radius: var(--radius-full);
   font-family: var(--font-body);
   font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.10em;
   color: var(--color-stone);
   background: transparent;
   border: 1px solid var(--color-chalk);
-  transition: color var(--ease-fast), border-color var(--ease-fast);
+  transition: color var(--ease-fast), border-color var(--ease-fast), background-color var(--ease-fast);
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .langBtn:hover {
   color: var(--color-gold);
   border-color: var(--color-gold);
+  background-color: var(--color-gold-light);
 }
 
 /* CTA */

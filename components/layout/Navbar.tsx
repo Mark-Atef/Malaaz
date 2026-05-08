@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
@@ -42,8 +42,14 @@ export default function Navbar() {
   const navLinks = [
     { label: t('howItWorks'), href: `/${locale}#how-it-works` },
     { label: t('forTraders'), href: `/${locale}#for-traders` },
-    { label: t('about'), href: `/${locale}#about` },
+    // WHY /about not #about: standalone page route vs. homepage anchor
+    { label: t('about'), href: `/${locale}/about` },
   ];
+
+  // The label the button shows — what you will SWITCH TO, not current locale
+  // Shows globe icon + target language label for clarity
+  const langLabel = locale === 'ar' ? 'EN' : 'ع';
+  const langAriaLabel = locale === 'ar' ? 'Switch to English' : 'التبديل إلى العربية';
 
   return (
     <>
@@ -63,13 +69,15 @@ export default function Navbar() {
           </nav>
 
           <div className={styles.desktopActions}>
+            {/* Language toggle with Globe icon */}
             <button
               type="button"
               onClick={toggleLocale}
               className={styles.langBtn}
-              aria-label={locale === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'}
+              aria-label={langAriaLabel}
             >
-              {locale === 'ar' ? 'EN' : 'ع'}
+              <Globe size={13} strokeWidth={1.75} aria-hidden="true" />
+              <span>{langLabel}</span>
             </button>
             <Link href={`/${locale}#early-access`} className={styles.cta}>
               {t('getEarlyAccess')}
@@ -81,9 +89,10 @@ export default function Navbar() {
               type="button"
               onClick={toggleLocale}
               className={styles.langBtn}
-              aria-label={locale === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'}
+              aria-label={langAriaLabel}
             >
-              {locale === 'ar' ? 'EN' : 'ع'}
+              <Globe size={13} strokeWidth={1.75} aria-hidden="true" />
+              <span>{langLabel}</span>
             </button>
             <button
               type="button"

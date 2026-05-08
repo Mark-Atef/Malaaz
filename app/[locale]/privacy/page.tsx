@@ -2,13 +2,71 @@
 import type { Metadata } from 'next';
 import styles from '../legal.module.css';
 
-export const metadata: Metadata = {
-  title: 'Privacy Policy — Malaaz',
-  description: 'How Malaaz collects and uses your data.',
-  robots: { index: false, follow: false },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isAr = locale === 'ar';
+  return {
+    title: isAr ? 'سياسة الخصوصية — ملاذ' : 'Privacy Policy — Malaaz',
+    description: isAr
+      ? 'كيف تجمع ملاذ بياناتك وتستخدمها'
+      : 'How Malaaz collects and uses your data.',
+    robots: { index: false, follow: false },
+  };
+}
 
-export default function PrivacyPage() {
+export default async function PrivacyPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const isAr = locale === 'ar';
+
+  if (isAr) {
+    return (
+      <main className={styles.page} dir="rtl" lang="ar">
+        <div className={`container ${styles.content}`}>
+          <h1 className={styles.title}>سياسة الخصوصية</h1>
+          <p className={styles.updated}>آخر تحديث: مايو ٢٠٢٦</p>
+
+          <section className={styles.section}>
+            <h2>المعلومات التي نجمعها</h2>
+            <p>
+              عند انضمامك لقائمة انتظار ملاذ، نجمع عنوان بريدك الإلكتروني والدور الذي اخترته (صاحب شقة أو تاجر). نستخدم هذه المعلومات فقط لإعلامك عند إطلاق المنصة وإرسال معلومات الوصول المبكر ذات الصلة.
+            </p>
+          </section>
+
+          <section className={styles.section}>
+            <h2>كيف نستخدم بياناتك</h2>
+            <p>
+              يتم تخزين بريدك الإلكتروني بشكل آمن ويُستخدم فقط للتواصل المتعلق بإطلاق المنتج. لا نبيع معلوماتك الشخصية أو نؤجرها أو نشاركها مع أطراف ثالثة لأغراض تسويقية.
+            </p>
+          </section>
+
+          <section className={styles.section}>
+            <h2>مدة الاحتفاظ بالبيانات</h2>
+            <p>
+              نحتفظ ببريدك الإلكتروني طالما بقيت مشتركاً في قائمة الانتظار. يمكنك إلغاء الاشتراك في أي وقت عبر مراسلتنا على{' '}
+              <a href="mailto:hello@malaaz.com">hello@malaaz.com</a>.
+            </p>
+          </section>
+
+          <section className={styles.section}>
+            <h2>التواصل معنا</h2>
+            <p>
+              لأي استفسارات تتعلق بالخصوصية، تواصل معنا على{' '}
+              <a href="mailto:hello@malaaz.com">hello@malaaz.com</a>.
+            </p>
+          </section>
+        </div>
+      </main>
+    );
+  }
+
   return (
     <main className={styles.page}>
       <div className={`container ${styles.content}`}>
@@ -38,8 +96,8 @@ export default function PrivacyPage() {
           <h2>Data retention</h2>
           <p>
             We retain your email for as long as you remain subscribed to our
-            waitlist. You may unsubscribe at any time by emailing
-            <a href="mailto:hello@malaaz.com"> hello@malaaz.com</a>.
+            waitlist. You may unsubscribe at any time by emailing{' '}
+            <a href="mailto:hello@malaaz.com">hello@malaaz.com</a>.
           </p>
         </section>
 
