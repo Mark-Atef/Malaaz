@@ -353,6 +353,7 @@
 .ctaButton:hover {
   background-color: var(--color-gold-dark);
   transform: translateY(-1px);
+  color: var(--color-gold-dark);
 }
 
 @media (prefers-reduced-motion: reduce) {

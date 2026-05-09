@@ -44,7 +44,7 @@
 .logoText {
   font-family: var(--font-display);
   font-size: 1.75rem;
-  font-weight: 300;
+  font-weight: var(--font-weight-semibold);
   letter-spacing: 0.08em;
   line-height: 1;
   color: var(--color-obsidian);
@@ -153,6 +153,7 @@
 }
 
 .cta:hover {
+  color: var(--color-gold-dark);
   background-color: var(--color-gold-dark);
   box-shadow: 0 4px 24px oklch(0.64 0.12 68 / 0.5);
 }

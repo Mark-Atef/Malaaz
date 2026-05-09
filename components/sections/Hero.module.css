@@ -7,7 +7,7 @@
   align-items: center;
   overflow: hidden;
   background-color: var(--color-ivory);
-  padding-top: var(--navbar-h);
+  margin-top: var(--space-4);
 }
 
 /* ── Decorative layers ── */

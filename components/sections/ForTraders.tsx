@@ -16,19 +16,10 @@ export default function ForTraders() {
         </div>
 
         <div className={styles.grid}>
-          {/* Big traders */}
-          <article className={`${styles.card} ${styles.cardDark} reveal reveal-delay-1`} aria-labelledby="traders-big">
-            <div className={styles.cardBadge}>01</div>
-            <h3 id="traders-big" className={styles.cardTitle}>{t('bigTitle')}</h3>
-            <p className={styles.cardDesc}>{t('bigDesc')}</p>
-            <a href="mailto:hello@malaaz.com" className={styles.cardCtaDark}>
-              {t('bigCta')}
-            </a>
-          </article>
 
           {/* Small traders */}
           <article className={`${styles.card} ${styles.cardLight} reveal reveal-delay-2`} aria-labelledby="traders-small">
-            <div className={styles.cardBadgeLight}>02</div>
+            <div className={styles.cardBadgeLight}>01</div>
             <div className={styles.priceBadge}>{t('smallBadge')}</div>
             <h3 id="traders-small" className={styles.cardTitleDark}>{t('smallTitle')}</h3>
             <p className={styles.cardDescDark}>{t('smallDesc')}</p>
@@ -36,6 +27,17 @@ export default function ForTraders() {
               {t('smallCta')}
             </a>
           </article>
+
+          {/* Big traders */}
+          <article className={`${styles.card} ${styles.cardDark} reveal reveal-delay-1`} aria-labelledby="traders-big">
+            <div className={styles.cardBadge}>02</div>
+            <h3 id="traders-big" className={styles.cardTitle}>{t('bigTitle')}</h3>
+            <p className={styles.cardDesc}>{t('bigDesc')}</p>
+            <a href="mailto:hello@malaaz.com" className={styles.cardCtaDark}>
+              {t('bigCta')}
+            </a>
+          </article>
+
         </div>
       </div>
     </section>
