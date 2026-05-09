@@ -21,8 +21,17 @@
 // NO fonts, NO globals.css, NO providers here — all of that lives in [locale]/layout.tsx
 // so it loads per-locale with the correct font variables and message context.
 
-import type { ReactNode } from 'react';
 
+// Next.js 16.2 requires <html><body> here.
+// suppressHydrationWarning: LocaleHtmlAttributes sets lang/dir/className
+// on document.documentElement after hydration. React would otherwise warn
+// about the attribute mismatch between server (no lang) and client (lang=ar).
+// bfcache note: cache-control:no-store failures are from Next.js dev overlay
+// and Vercel preview — not actionable per Lighthouse's own classification.
+
+
+import type { ReactNode } from 'react';
+ 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     // suppressHydrationWarning: React will not warn when LocaleHtmlAttributes
@@ -34,3 +43,36 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     </html>
   );
 }
+
+
+
+// Alternative approach: determine locale in this root layout and render <html lang=>
+
+// middleware
+// headers
+// cookies
+// next-intl helpers
+
+// to determine locale server-side.
+
+// That avoids:
+
+// hydration mutation
+// suppressHydrationWarning
+// client-side document mutation
+
+// But your current setup is still acceptable.
+
+
+
+
+
+// export default async function RootLayout({ children }) {
+//   const locale = await getLocaleSomehow();
+
+//   return (
+//     <html lang={locale}>
+//       <body>{children}</body>
+//     </html>
+//   );
+// }

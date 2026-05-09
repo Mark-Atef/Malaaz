@@ -130,7 +130,7 @@ export default function Hero() {
               <div className={styles.featureIcon} aria-hidden="true">
                 <Icon size={20} strokeWidth={1.5} />
               </div>
-              <h3 className={styles.featureTitle}>{t(`${key}Title` as never)}</h3>
+              <p className={styles.featureTitle}>{t(`${key}Title` as never)}</p>
               <p className={styles.featureDesc}>{t(`${key}Desc` as never)}</p>
             </article>
           ))}

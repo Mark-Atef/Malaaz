@@ -14,6 +14,59 @@
   border-bottom-color: var(--color-chalk);
 }
 
+
+/*
+  Dark variant: applied when page hero is obsidian (e.g. /about).
+  Before scrolling the navbar is transparent — logo and links need to be
+  ivory so they're visible against the dark background.
+  Once scrolled, .scrolled takes over and resets to obsidian text.
+*/
+.dark .logoText {
+  color: var(--color-ivory);
+}
+
+.dark .navLink {
+  color: oklch(0.98 0.003 80 / 0.75);
+}
+
+.dark .langBtn {
+  color: var(--color-ivory);
+  border-color: oklch(1 0 0 / 0.2);
+}
+
+.dark .langBtn:hover {
+  color: var(--color-gold);
+  border-color: var(--color-gold);
+  background-color: oklch(1 0 0 / 0.06);
+}
+
+.dark .hamburger {
+  color: var(--color-ivory);
+}
+
+.dark .desktopActions:hover {
+  color: var(--color-white);
+}
+
+/* Reset dark styles once scrolled — the frosted bg provides contrast */
+.scrolled.dark .logoText {
+  color: var(--color-obsidian);
+}
+
+.scrolled.dark .navLink {
+  color: var(--color-stone);
+}
+
+.scrolled.dark .langBtn {
+  color: var(--color-stone);
+  border-color: var(--color-chalk);
+}
+
+.scrolled.dark .hamburger {
+  color: var(--color-obsidian);
+}
+
+
 .inner {
   max-width: var(--max-width);
   margin-inline: auto;
@@ -51,7 +104,9 @@
   transition: opacity var(--ease-fast);
 }
 
-.logo:hover .logoText { opacity: 0.65; }
+.logo:hover .logoText {
+  opacity: 0.65;
+}
 
 .logoLine {
   position: absolute;
@@ -64,7 +119,9 @@
   transition: transform 0.3s ease;
 }
 
-.logo:hover .logoLine { transform: scaleX(1); }
+.logo:hover .logoLine {
+  transform: scaleX(1);
+}
 
 /* Desktop nav */
 .desktopNav {
@@ -74,7 +131,9 @@
 }
 
 @media (min-width: 768px) {
-  .desktopNav { display: flex; }
+  .desktopNav {
+    display: flex;
+  }
 }
 
 .navLink {
@@ -104,7 +163,9 @@
 }
 
 @media (min-width: 768px) {
-  .desktopActions { display: flex; }
+  .desktopActions {
+    display: flex;
+  }
 }
 
 /* Language button — Globe icon + language label */
@@ -167,7 +228,9 @@
 }
 
 @media (min-width: 768px) {
-  .mobileActions { display: none; }
+  .mobileActions {
+    display: none;
+  }
 }
 
 .hamburger {
@@ -183,7 +246,9 @@
   transition: background-color var(--ease-fast);
 }
 
-.hamburger:hover { background-color: var(--color-gold-light); }
+.hamburger:hover {
+  background-color: var(--color-gold-light);
+}
 
 /* Mobile menu */
 .mobileMenu {
@@ -200,7 +265,9 @@
 }
 
 @media (min-width: 768px) {
-  .mobileMenu { display: none; }
+  .mobileMenu {
+    display: none;
+  }
 }
 
 .mobileMenu.open {
@@ -234,9 +301,14 @@
   transition: color var(--ease-fast);
 }
 
-.mobileLink:hover { color: var(--color-gold); }
+.mobileLink:hover {
+  color: var(--color-gold);
+}
 
-.arrow { color: var(--color-chalk); font-size: 1.125rem; }
+.arrow {
+  color: var(--color-chalk);
+  font-size: 1.125rem;
+}
 
 .mobileCta {
   display: flex;
@@ -254,4 +326,6 @@
   transition: background-color var(--ease-fast);
 }
 
-.mobileCta:hover { background-color: var(--color-gold-dark); }
+.mobileCta:hover {
+  background-color: var(--color-gold-dark);
+}

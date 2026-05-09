@@ -55,10 +55,13 @@ export async function generateMetadata({
     title: { default: title, template: `%s — Malaaz` },
     description,
     metadataBase: new URL('https://malaaz.com'),
-    alternates: {
-      canonical: `/${locale}`,
-      languages: { ar: '/ar', en: '/en' },
-    },
+alternates: {
+  canonical: `https://malaaz.com/${locale}`,
+  languages: {
+    ar: 'https://malaaz.com/ar',
+    en: 'https://malaaz.com/en'
+  },
+},
     openGraph: {
       title,
       description,
@@ -71,7 +74,7 @@ export async function generateMetadata({
           url: '/og-image.png',
           width: 1200,
           height: 630,
-          alt: isAr ? 'ملاذ — منصة التشطيب الذكية' : 'Malaaz — Egypt\'s Smart Finishing Platform',
+          alt: isAr ? 'ملاذ — منصة التشطيب الذكية' : "Malaaz — Egypt's Smart Finishing Platform",
         },
       ],
     },
