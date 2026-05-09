@@ -28,9 +28,9 @@ function InstagramIcon() {
 }
 
 const socialLinks = [
-  { id: 'facebook', href: 'https://facebook.com/malaaz', Icon: FacebookIcon, label: 'Facebook' },
-  { id: 'linkedin', href: 'https://linkedin.com/company/malaaz', Icon: LinkedInIcon, label: 'LinkedIn' },
-  { id: 'instagram', href: 'https://instagram.com/malaaz', Icon: InstagramIcon, label: 'Instagram' },
+  { id: 'facebook', href: '#', Icon: FacebookIcon, label: 'Facebook' },
+  { id: 'linkedin', href: '#', Icon: LinkedInIcon, label: 'LinkedIn' },
+  { id: 'instagram', href: '#', Icon: InstagramIcon, label: 'Instagram' },
 ] as const;
 
 export default function Footer() {
