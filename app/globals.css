@@ -21,6 +21,7 @@ li { list-style: none; }
 
   /* ── Malaaz Brand colors ── */
   --color-obsidian:    oklch(0.13 0.008 62);
+  --color-gold-dark:   oklch(19.762% 0.0409 80.167);
   --color-gold:        oklch(0.64 0.12 68);
   --color-gold-light:  oklch(0.93 0.015 70);
   --color-terracotta:  oklch(0.54 0.13 40);

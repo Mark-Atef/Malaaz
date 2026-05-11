@@ -1,7 +1,6 @@
-// app/api/waitlist/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
-
+ 
 // WHY lazy-instantiate Resend:
 // If RESEND_API_KEY is missing at import time (e.g. during local dev without .env),
 // `new Resend(undefined)` throws immediately and crashes the build.
@@ -12,10 +11,10 @@ function getResend(): Resend {
   if (!key) throw new Error('RESEND_API_KEY environment variable is not set');
   return new Resend(key);
 }
-
+ 
 const FROM_ADDRESS = 'Malaaz <waitlist@malaaz.com>';
 const NOTIFY_ADDRESS = 'hello@malaaz.com'; // internal notification recipient
-
+ 
 function confirmationHtml(type: 'homeowner' | 'trader', email: string): string {
   const isHomeowner = type === 'homeowner';
   return `
@@ -56,18 +55,26 @@ function confirmationHtml(type: 'homeowner' | 'trader', email: string): string {
 </body>
 </html>`;
 }
-
+ 
 function notificationHtml(email: string, type: 'homeowner' | 'trader'): string {
   return `
 <p><strong>New waitlist signup</strong></p>
 <p>Email: ${email}<br>Type: ${type}<br>Time: ${new Date().toISOString()}</p>`;
 }
-
+ 
 export async function POST(req: NextRequest) {
+    // Prevent large body attacks
+  const contentLength = req.headers.get('content-length');
+  if (contentLength && parseInt(contentLength) > 1024) { // 1KB max
+    return NextResponse.json(
+      { success: false, message: 'Request too large' },
+      { status: 413 }
+    );
+  }
   try {
     const body = await req.json() as { email?: string; type?: string };
     const { email, type } = body;
-
+ 
     // Input validation
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json(
@@ -81,10 +88,10 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
-
+ 
     const validType = type as 'homeowner' | 'trader';
     const resend = getResend();
-
+ 
     // Send both emails in parallel — confirmation to user + notification to team
     const [confirmResult, notifyResult] = await Promise.allSettled([
       resend.emails.send({
@@ -102,7 +109,7 @@ export async function POST(req: NextRequest) {
         html: notificationHtml(email, validType),
       }),
     ]);
-
+ 
     // Log failures but do not block success response — user registered either way
     if (confirmResult.status === 'rejected') {
       console.error('Confirmation email failed:', confirmResult.reason);
@@ -110,10 +117,10 @@ export async function POST(req: NextRequest) {
     if (notifyResult.status === 'rejected') {
       console.error('Notification email failed:', notifyResult.reason);
     }
-
+ 
     console.info(`Waitlist signup: ${email} (${type})`);
     return NextResponse.json({ success: true, message: 'Registered successfully' });
-
+ 
   } catch (err: unknown) {
     // Do not expose internal error details to client
     const message = err instanceof Error ? err.message : 'Unknown error';

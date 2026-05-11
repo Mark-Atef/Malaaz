@@ -2,6 +2,9 @@
 import { useTranslations } from 'next-intl';
 import styles from './About.module.css';
 
+// 4 co-founders — initials translated per locale
+const TEAM_KEYS = ['1', '2', '3', '4'] as const;
+
 export default function About() {
   const t = useTranslations('about');
 
@@ -34,9 +37,13 @@ export default function About() {
             <div className={`${styles.team} reveal reveal-delay-3`}>
               <span className={styles.teamLabel}>{t('team')}</span>
               <div className={styles.teamAvatars} aria-label={t('team')}>
-                {['M', 'A', 'K'].map((initial) => (
-                  <div key={initial} className={styles.avatar} aria-label={initial}>
-                    {initial}
+                {TEAM_KEYS.map((key) => (
+                  <div
+                    key={key}
+                    className={styles.avatar}
+                    aria-label={`Member ${key}`}
+                  >
+                    {t(`member${key}Initial`)}
                   </div>
                 ))}
               </div>

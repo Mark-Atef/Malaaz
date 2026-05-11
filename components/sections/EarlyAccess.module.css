@@ -77,10 +77,17 @@
   transition: border-color var(--ease-fast);
 }
 
-.input:focus { border-color: var(--color-gold); }
-.inputError { border-color: var(--color-terracotta) !important; }
+.input:focus {
+  border-color: var(--color-gold);
+}
 
-.input::placeholder { color: var(--color-stone); }
+.inputError {
+  border-color: var(--color-terracotta) !important;
+}
+
+.input::placeholder {
+  color: var(--color-stone);
+}
 
 .error {
   font-size: 0.8125rem;
@@ -109,8 +116,14 @@
   cursor: pointer;
 }
 
-.btnPrimary:hover:not(:disabled) { background-color: var(--color-gold-dark); }
-.btnPrimary:disabled { opacity: 0.6; cursor: not-allowed; }
+.btnPrimary:hover:not(:disabled) {
+  background-color: var(--color-gold-dark);
+}
+
+.btnPrimary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 
 .btnSecondary {
   flex: 1;
@@ -130,7 +143,11 @@
   border-color: oklch(1 0 0 / 0.5);
   background-color: oklch(1 0 0 / 0.05);
 }
-.btnSecondary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btnSecondary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 
 .success {
   display: flex;
@@ -162,4 +179,250 @@
   margin-top: var(--space-4);
 }
 
-.community:hover { color: var(--color-ivory); }
+.community:hover {
+  color: var(--color-ivory);
+}
+
+/* ADD to EarlyAccess.module.css */
+
+/* Counter badge */
+.counterBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  background-color: oklch(1 0 0 / 0.08);
+  border: 1px solid oklch(1 0 0 / 0.15);
+  font-size: 0.8125rem;
+  color: oklch(0.98 0.003 80 / 0.8);
+  font-weight: 500;
+}
+
+.counterDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: oklch(0.65 0.18 145);
+  flex-shrink: 0;
+  animation: livePulse 2s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* ── Referral Panel ── */
+.referralPanel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  width: 100%;
+  max-width: 520px;
+  background-color: oklch(0.17 0.008 62);
+  border: 1px solid oklch(1 0 0 / 0.12);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+}
+
+.referralHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.referralCheck {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: oklch(0.35 0.1 150 / 0.2);
+  color: oklch(0.65 0.18 145);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.referralTitle {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--color-ivory);
+  margin-bottom: var(--space-1);
+}
+
+.referralSub {
+  font-size: 0.875rem;
+  color: var(--color-stone);
+}
+
+/* Position box */
+.positionBox {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-5);
+  background-color: oklch(1 0 0 / 0.04);
+  border-radius: var(--radius-md);
+  border: 1px solid oklch(1 0 0 / 0.08);
+}
+
+.positionNumber {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--color-gold);
+  line-height: 1;
+  min-width: 3.5rem;
+  text-align: center;
+}
+
+.positionLabel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.positionMain {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-ivory);
+}
+
+.positionSub {
+  font-size: 0.75rem;
+  color: var(--color-stone);
+}
+
+/* Share block */
+.shareBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid oklch(1 0 0 / 0.08);
+}
+
+.shareTitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-ivory);
+}
+
+.shareDesc {
+  font-size: 0.8125rem;
+  color: var(--color-stone);
+  line-height: 1.6;
+}
+
+/* Link row */
+.linkRow {
+  display: flex;
+  gap: var(--space-2);
+  align-items: stretch;
+}
+
+.linkBox {
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-3) var(--space-4);
+  background-color: oklch(1 0 0 / 0.04);
+  border: 1px solid oklch(1 0 0 / 0.12);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.linkText {
+  font-size: 0.75rem;
+  color: var(--color-stone);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.02em;
+}
+
+.copyBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-obsidian);
+  background-color: var(--color-gold);
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--ease-fast);
+  flex-shrink: 0;
+}
+
+.copyBtn:hover {
+  background-color: var(--color-gold-dark);
+  color: var(--color-ivory);
+}
+
+/* Share buttons */
+.shareButtons {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.shareBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 2.5rem;
+  padding-inline: var(--space-4);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color var(--ease-fast), color var(--ease-fast);
+  flex: 1;
+  justify-content: center;
+}
+
+.whatsappBtn {
+  background-color: oklch(0.55 0.18 145 / 0.15);
+  color: oklch(0.75 0.18 145);
+  border: 1px solid oklch(0.55 0.18 145 / 0.25);
+}
+
+.whatsappBtn:hover {
+  background-color: oklch(0.55 0.18 145 / 0.25);
+  color: oklch(0.85 0.18 145);
+}
+
+.fbBtn {
+  background-color: oklch(1 0 0 / 0.06);
+  color: var(--color-stone);
+  border: 1px solid oklch(1 0 0 / 0.12);
+}
+
+.fbBtn:hover {
+  background-color: oklch(1 0 0 / 0.1);
+  color: var(--color-ivory);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .counterDot {
+    animation: none;
+  }
+}

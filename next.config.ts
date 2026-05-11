@@ -3,18 +3,50 @@ import createNextIntlPlugin from 'next-intl/plugin';
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
+
+const securityHeaders = [
+  { key: 'X-DNS-Prefetch-Control', value: 'on' },
+  { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+  { key: 'X-Content-Type-Options', value: 'nosniff' },
+  { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+  { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+  {
+    key: 'Content-Security-Policy',
+    value: [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline'",    // unsafe-inline needed for Next.js hydration
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "font-src 'self' https://fonts.gstatic.com",
+      "img-src 'self' data: https:",
+      "connect-src 'self' https://api.anthropic.com",  // if AI added later
+      "frame-ancestors 'none'",
+    ].join('; '),
+  },
+  { key: 'X-XSS-Protection', value: '1; mode=block' },
+];
+
 const nextConfig: NextConfig = {
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: securityHeaders,
+      },
+      {
+        // API routes: explicit CORS — deny all external origins by default
+        source: '/api/(.*)',
+        headers: [
+          { key: 'Access-Control-Allow-Origin', value: 'https://malaaz.com' },
+          { key: 'Access-Control-Allow-Methods', value: 'POST, OPTIONS' },
+          { key: 'Access-Control-Allow-Headers', value: 'Content-Type' },
+        ],
+      },
+    ];
+  },
   experimental: {
-    // Tree-shake lucide-react — only import icons that are actually used.
-    // Lighthouse showed 0u7jag0_1s_wt.js at 47.4KB with 24.2KB unused;
-    // this is the lucide barrel export being bundled in full.
     optimizePackageImports: ['lucide-react'],
   },
-  // Modern browser targets eliminate Array.at / Object.hasOwn polyfills
-  // that Lighthouse flagged as 13.6KB of wasted legacy JS.
-  // Targets: last 2 Chrome versions, last 2 Firefox, last 2 Safari, Edge 18+
-  // This covers >95% of Egyptian mobile users (Chrome on Android).
 };
- 
+
 export default withNextIntl(nextConfig);
  

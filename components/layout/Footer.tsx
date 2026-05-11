@@ -42,6 +42,7 @@ export default function Footer() {
   const navLinks = [
     { label: nav('howItWorks'), href: `/${locale}#how-it-works` },
     { label: nav('forTraders'), href: `/${locale}#for-traders` },
+    { label: nav('traders'), href: `/${locale}/traders` },
     { label: nav('about'), href: `/${locale}#about` },
     { label: 'FAQ', href: `/${locale}#faq` },
   ];

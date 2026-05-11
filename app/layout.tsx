@@ -37,6 +37,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     // suppressHydrationWarning: React will not warn when LocaleHtmlAttributes
     // mutates lang/dir/className on this element after hydration.
     <html suppressHydrationWarning>
+            <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body suppressHydrationWarning>
         {children}
       </body>

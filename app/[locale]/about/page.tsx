@@ -43,11 +43,13 @@ export default async function AboutPage({
     { title: t('moat3Title'), desc: t('moat3Desc') },
   ];
  
-  const team = [
-    { initials: 'M', name: t('member1Name'), role: t('member1Role') },
-    { initials: 'A', name: t('member2Name'), role: t('member2Role') },
-    { initials: 'K', name: t('member3Name'), role: t('member3Role') },
-  ];
+// Replace the team const with:
+const team = [
+  { initials: t('member1Initial'), name: t('member1Name'), role: t('member1Role') },
+  { initials: t('member2Initial'), name: t('member2Name'), role: t('member2Role') },
+  { initials: t('member3Initial'), name: t('member3Name'), role: t('member3Role') },
+  { initials: t('member4Initial'), name: t('member4Name'), role: t('member4Role') },
+];
  
   return (
     <main className={styles.page}>

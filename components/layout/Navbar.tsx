@@ -16,16 +16,18 @@ import styles from './Navbar.module.css';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled]  = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const t        = useTranslations('nav');
-  const locale   = useLocale();
+  // FIX: useRef at component top level — never inside JSX
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  const t = useTranslations('nav');
+  const locale = useLocale();
   const pathname = usePathname();
-  const router   = useRouter();
-  const isRTL    = locale === 'ar';
+  const router = useRouter();
+  const isRTL = locale === 'ar';
 
-  // Pages whose hero is dark — logo must be ivory when unscrolled
-  const isDarkHero = pathname.includes('/about');
+  const isDarkHero = pathname.includes('/about') || pathname.includes('/traders');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -41,7 +43,7 @@ export default function Navbar() {
   const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   const toggleLocale = useCallback(() => {
-    const next    = locale === 'ar' ? 'en' : 'ar';
+    const next = locale === 'ar' ? 'en' : 'ar';
     const stripped = pathname.replace(/^\/(ar|en)/, '') || '/';
     router.push(`/${next}${stripped}`);
     closeMenu();
@@ -49,16 +51,17 @@ export default function Navbar() {
 
   const navLinks = [
     { label: t('howItWorks'), href: `/${locale}#how-it-works` },
-    { label: t('forTraders'), href: `/${locale}#for-traders`  },
-    { label: t('about'),      href: `/${locale}/about`        },
+    { label: t('forTraders'), href: `/${locale}#for-traders` },
+    { label: t('traders'), href: `/${locale}/traders` },
+    { label: t('about'), href: `/${locale}/about` },
   ];
 
-  const langLabel    = locale === 'ar' ? 'EN' : 'ع';
+  const langLabel = locale === 'ar' ? 'EN' : 'ع';
   const langAriaLabel = locale === 'ar' ? 'Switch to English' : 'التبديل إلى العربية';
 
   const headerClass = [
     styles.header,
-    scrolled    ? styles.scrolled  : '',
+    scrolled ? styles.scrolled : '',
     isDarkHero && !scrolled ? styles.dark : '',
   ].filter(Boolean).join(' ');
 
@@ -66,8 +69,6 @@ export default function Navbar() {
     <>
       <header className={headerClass}>
         <div className={styles.inner}>
-
-          {/* Logo — bolder weight, ivory on dark pages */}
           <Link href={`/${locale}`} className={styles.logo} aria-label="Malaaz">
             <span className={styles.logoText}>Malaaz</span>
             <span className={styles.logoLine} />
@@ -117,13 +118,13 @@ export default function Navbar() {
               {menuOpen ? <X size={18} strokeWidth={1.75} /> : <Menu size={18} strokeWidth={1.75} />}
             </button>
           </div>
-
         </div>
       </header>
 
+      {/* FIX: stable ref attached to correct element */}
       <div
         id="mobile-menu"
-        ref={useRef<HTMLDivElement>(null)}
+        ref={menuRef}
         className={`${styles.mobileMenu} ${menuOpen ? styles.open : ''}`}
       >
         <div className={styles.mobileDivider} />
@@ -142,7 +143,7 @@ export default function Navbar() {
           <Link
             href={`/${locale}#early-access`}
             onClick={closeMenu}
-            className={`${styles.mobileCta} reveal reveal-delay-4`}
+            className={`${styles.mobileCta} reveal reveal-delay-5`}
           >
             {t('getEarlyAccess')}
           </Link>
