@@ -109,7 +109,7 @@
     "member1Initial": "M",
     "member2Initial": "M",
     "member3Initial": "M",
-    "member4Initial": "N"
+    "member4Initial": "M"
   },
   "aboutPage": {
     "eyebrow": "Our Story",
@@ -137,17 +137,21 @@
     "moat3Desc": "Our AI assistant runs on live inventory from hundreds of traders in real time — accurate and immediately actionable recommendations.",
     "teamTitle": "Founding Team",
     "teamSub": "A small team solving a big problem.",
-    "member1Name": "Mohamed",
+    "member1Name": "Mohamed Magdy",
     "member1Role": "Co-Founder — Business",
-    "member2Name": "Mark",
+    "member2Name": "Mark Yacoub",
     "member2Role": "Co-Founder — Technology & Business",
-    "member3Name": "Karim",
+    "member3Name": "Mohamed Agroudy",
     "member3Role": "Co-Founder — Product",
+    "member4Name": "Mohamed Nassar",
+    "member4Role": "Co-Founder — Technology & Business",
+    "member1Initial": "M",
+"member2Initial": "M",
+"member3Initial": "M",
+"member4Initial": "M",
     "ctaTitle": "Be part of the story",
     "ctaSub": "Whether you own an apartment waiting to be finished or run a shop looking to grow — Malaaz is for you.",
-    "ctaButton": "Reserve your spot",
-    "member4Name": "Mohamed Nassar",
-    "member4Role": "Co-Founder — Technology & Business"
+    "ctaButton": "Reserve your spot"
   },
   "costSimulator": {
     "eyebrow": "Cost Simulator",

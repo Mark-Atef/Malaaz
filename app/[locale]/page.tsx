@@ -23,9 +23,9 @@ export default function Home() {
     <main className="page-enter" id="main-content" aria-label="Malaaz main content">
       {/* ScrollRevealInit is in layout.tsx — do NOT add it here */}
       <Hero />
-      <TrustPartners />
       <Problem />
       <HowItWorks />
+      <TrustPartners />
       <CostSimulator />
       <About />
       <ForTraders />

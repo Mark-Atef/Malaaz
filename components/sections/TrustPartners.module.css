@@ -1,126 +1,184 @@
 /* components/sections/TrustPartners.module.css */
 
 .section {
-  background-color: var(--color-ivory);
-  padding-block: var(--space-12);
+  background-color: var(--color-white);
+  padding-block: var(--space-10) var(--space-8);
   border-top: 1px solid var(--color-chalk);
   border-bottom: 1px solid var(--color-chalk);
 }
 
-/* ── Trader count badge ── */
-.countBadge {
+/* ── Stats row ── */
+.statsRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-bottom: var(--space-8);
+}
+
+/* Live trader chip */
+.liveChip {
   display: inline-flex;
   align-items: center;
   gap: var(--space-3);
-  padding: var(--space-3) var(--space-5);
+  padding: var(--space-2) var(--space-5);
   border-radius: var(--radius-full);
-  background-color: oklch(0.15 0.012 150 / 0.08);
-  border: 1px solid oklch(0.35 0.1 150 / 0.2);
-  margin-bottom: var(--space-10);
+  background-color: oklch(0.15 0.012 150 / 0.07);
+  border: 1px solid oklch(0.35 0.1 150 / 0.18);
   flex-wrap: wrap;
-  justify-content: center;
 }
 
-.countDot {
-  width: 8px;
-  height: 8px;
+.liveDot {
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background-color: oklch(0.55 0.14 155);
   flex-shrink: 0;
-  /* Pulse animation — alive signal */
-  animation: pulse 2.4s ease-in-out infinite;
+  animation: livePulse 2.2s ease-in-out infinite;
 }
 
-@keyframes pulse {
+@keyframes livePulse {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.5; transform: scale(0.85); }
+  50%       { opacity: 0.4; transform: scale(0.82); }
 }
 
-.countText {
+.liveText {
   font-size: 0.875rem;
   color: var(--color-obsidian);
   font-weight: 500;
 }
 
-.countNum {
+.liveText strong {
   font-weight: 700;
   color: oklch(0.45 0.14 155);
 }
 
-.countNote {
+.liveNote {
   font-size: 0.75rem;
   color: var(--color-stone);
+  padding-inline-start: var(--space-2);
+  border-inline-start: 1px solid var(--color-chalk);
 }
 
-/* ── Shared block layout ── */
-.block {
+/* Stat pills */
+.statPills {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-6);
-}
-
-.blockEyebrow {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-stone);
-}
-
-/* ── Payment row ── */
-.paymentRow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-4);
+  gap: var(--space-3);
   flex-wrap: wrap;
 }
 
-.paymentItem {
-  color: var(--color-stone);
-  transition: color var(--ease-fast);
-  height: 40px;
+.statPill {
   display: flex;
   align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  background-color: var(--color-ivory);
+  border: 1px solid var(--color-chalk);
 }
 
-.paymentItem:hover { color: var(--color-obsidian); }
+.statValue {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-gold);
+}
 
-.paymentItem svg { height: 40px; width: auto; }
+.statLabel {
+  font-size: 0.75rem;
+  color: var(--color-stone);
+  white-space: nowrap;
+}
 
-.paymentNote {
+/* ── Shared row layout ── */
+.row {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-5) var(--space-8);
+  padding-block: var(--space-4);
+}
+
+.rowLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-stone);
+  white-space: nowrap;
+  min-width: 120px;
+}
+
+/* ── Payment partner logos ── */
+.partners {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.partnerLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding-inline: var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-chalk);
+  color: var(--color-stone);
+  background-color: var(--color-ivory);
+  transition: border-color var(--ease-fast), color var(--ease-fast), background-color var(--ease-fast);
+  cursor: default;
+}
+
+.partnerLogo:hover {
+  border-color: var(--color-gold);
+  color: var(--color-obsidian);
+  background-color: var(--color-gold-light);
+}
+
+/* BNPL chip */
+.bnplChip {
+  display: inline-flex;
   align-items: center;
   gap: var(--space-2);
   font-size: 0.75rem;
   color: var(--color-stone);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-full);
+  background-color: var(--color-ivory);
+  border: 1px solid var(--color-chalk);
+  white-space: nowrap;
 }
 
-/* ── Divider ── */
-.divider {
-  height: 1px;
-  background-color: var(--color-chalk);
-  margin-block: var(--space-10);
+.bnplChip svg {
+  color: var(--color-gold);
+  flex-shrink: 0;
 }
 
-/* ── Press row ── */
+/* ── Press logos ── */
 .pressRow {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: var(--space-6);
+  gap: var(--space-2);
   flex-wrap: wrap;
+  flex: 1;
 }
 
 .pressLogo {
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 36px;
-  padding-inline: var(--space-5);
-  border: 1.5px solid var(--color-chalk);
+  height: 32px;
+  padding-inline: var(--space-4);
   border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-chalk);
+  text-decoration: none;
+  background-color: var(--color-ivory);
   transition: border-color var(--ease-fast), background-color var(--ease-fast);
 }
 
@@ -138,8 +196,31 @@
   transition: color var(--ease-fast);
 }
 
-.pressLogo:hover .pressLogoText { color: var(--color-gold); }
+.pressLogo:hover .pressLogoText {
+  color: var(--color-gold);
+}
+
+/* ── Divider ── */
+.divider {
+  height: 1px;
+  background-color: var(--color-chalk);
+  margin-block: var(--space-2);
+}
+
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  .statsRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .rowLabel {
+    min-width: auto;
+  }
+  .row {
+    gap: var(--space-4);
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .countDot { animation: none; }
+  .liveDot { animation: none; }
 }

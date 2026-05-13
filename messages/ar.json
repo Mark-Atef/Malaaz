@@ -109,7 +109,7 @@
     "member1Initial": "م",
     "member2Initial": "م",
     "member3Initial": "م",
-    "member4Initial": "ن"
+    "member4Initial": "م"
   },
   "aboutPage": {
     "eyebrow": "قصتنا",
@@ -137,17 +137,21 @@
     "moat3Desc": "مساعدنا الذكي يعمل على مخزون حي من مئات التجار في الوقت الفعلي — توصيات دقيقة وقابلة للتنفيذ فوراً.",
     "teamTitle": "الفريق المؤسس",
     "teamSub": "فريق صغير يحل مشكلة كبيرة.",
-    "member1Name": "محمد",
+    "member1Name": "محمد مجدي",
     "member1Role": "المؤسس المشارك — أعمال",
-    "member2Name": "مارك",
+    "member2Name": "مارك يعقوب",
     "member2Role": "المؤسس المشارك — تقنية وأعمال",
-    "member3Name": "كريم",
-    "member3Role": "المؤسس المشارك — منتج",
+    "member3Name": "محمد عجرودي",
+    "member3Role": "المؤسس المشارك — أعمال",
+    "member4Name": "محمد نصار",
+    "member4Role": "المؤسس المشارك — تقنية وأعمال",
+    "member1Initial": "م",
+"member2Initial": "م",
+"member3Initial": "م",
+"member4Initial": "م",
     "ctaTitle": "كن جزءاً من القصة",
     "ctaSub": "سواء كنت صاحب شقة أو تاجراً — ملاذ مكانك.",
-    "ctaButton": "احجز مكانك الآن",
-    "member4Name": "محمد نصار",
-    "member4Role": "المؤسس المشارك — تقنية وأعمال"
+    "ctaButton": "احجز مكانك الآن"
   },
   "costSimulator": {
     "eyebrow": "حاسبة التشطيب",

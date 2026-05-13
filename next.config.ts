@@ -1,8 +1,11 @@
+// next.config.ts
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
+// true when running `npm run dev`, false on Vercel production
+const isDev = process.env.NODE_ENV === 'development';
 
 const securityHeaders = [
   { key: 'X-DNS-Prefetch-Control', value: 'on' },
@@ -14,11 +17,15 @@ const securityHeaders = [
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline'",    // unsafe-inline needed for Next.js hydration
+      // Dev: Turbopack requires eval() for source maps and React debugging
+      // Prod: strict — no eval ever
+      isDev
+        ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
+        : "script-src 'self' 'unsafe-inline'",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
-      "img-src 'self' data: https:",
-      "connect-src 'self' https://api.anthropic.com",  // if AI added later
+      "img-src 'self' data: https: blob:",
+      "connect-src 'self'",
       "frame-ancestors 'none'",
     ].join('; '),
   },
@@ -33,11 +40,13 @@ const nextConfig: NextConfig = {
         headers: securityHeaders,
       },
       {
-        // API routes: explicit CORS — deny all external origins by default
         source: '/api/(.*)',
         headers: [
-          { key: 'Access-Control-Allow-Origin', value: 'https://malaaz.com' },
-          { key: 'Access-Control-Allow-Methods', value: 'POST, OPTIONS' },
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: isDev ? '*' : 'https://malaaz.com',
+          },
+          { key: 'Access-Control-Allow-Methods', value: 'POST, GET, OPTIONS' },
           { key: 'Access-Control-Allow-Headers', value: 'Content-Type' },
         ],
       },
@@ -49,4 +58,3 @@ const nextConfig: NextConfig = {
 };
 
 export default withNextIntl(nextConfig);
- 

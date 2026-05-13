@@ -1,6 +1,9 @@
-/* ── Page wrapper ── */
+/* app/[locale]/about/about.module.css */
+
+/* ── MOBILE FIX: prevent horizontal scroll from decorative elements ── */
 .page {
   background-color: var(--color-ivory);
+  overflow-x: hidden; /* clips decorative circles and orbs that extend beyond viewport */
 }
 
 /* ── Hero ── */
@@ -9,15 +12,15 @@
   padding-top: calc(var(--navbar-h) + var(--space-20));
   padding-bottom: var(--space-20);
   position: relative;
-  overflow: hidden;
+  overflow: hidden; /* clips the ::after pseudo-element on mobile */
 }
 
 /* Subtle gold orb */
 .hero::after {
   content: '';
   position: absolute;
-  inset-inline-end: -10%;
-  top: -20%;
+  inset-inline-end: -5%;
+  top: -10%;
   width: 50vw;
   max-width: 560px;
   aspect-ratio: 1;
@@ -28,6 +31,17 @@
     transparent 65%
   );
   pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding-top: calc(var(--navbar-h) + var(--space-12));
+    padding-bottom: var(--space-12);
+  }
+  /* Hide the orb on mobile — it causes paint issues */
+  .hero::after {
+    display: none;
+  }
 }
 
 .heroInner {
@@ -61,6 +75,7 @@
   color: var(--color-ivory);
   letter-spacing: -0.02em;
   line-height: 1.1;
+  white-space: pre-line;
 }
 
 .lead {
@@ -70,7 +85,7 @@
   max-width: 600px;
 }
 
-/* ── Story section ── */
+/* ── Story ── */
 .storySection {
   background-color: var(--color-white);
 }
@@ -83,10 +98,17 @@
 }
 
 @media (min-width: 900px) {
-  .storyGrid { grid-template-columns: 1fr 1.6fr; gap: var(--space-20); }
+  .storyGrid {
+    grid-template-columns: 1fr 1.6fr;
+    gap: var(--space-20);
+  }
 }
 
-.storyLeft { display: flex; flex-direction: column; gap: var(--space-4); }
+.storyLeft {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
 
 .sectionTitle {
   font-size: clamp(1.875rem, 4vw, 3rem);
@@ -134,6 +156,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-4);
+  list-style: none;
 }
 
 @media (min-width: 640px) {
@@ -171,7 +194,10 @@
 }
 
 /* ── Moats ── */
-.moatsSection { background-color: var(--color-obsidian); color: var(--color-ivory); }
+.moatsSection {
+  background-color: var(--color-obsidian);
+  color: var(--color-ivory);
+}
 
 .moatsHeader {
   display: flex;
@@ -199,6 +225,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-4);
+  list-style: none;
 }
 
 @media (min-width: 768px) {
@@ -240,7 +267,7 @@
   flex: 1;
 }
 
-/* ── Team ── */
+/* ── Team — 4 cards side by side ── */
 .teamSection { background-color: var(--color-white); }
 
 .teamSub {
@@ -248,62 +275,145 @@
   color: var(--color-stone);
   text-align: center;
   margin-top: calc(-1 * var(--space-6));
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--space-12);
   line-height: 1.7;
 }
 
+/* 4 columns desktop, 2 tablet, 1 mobile */
 .teamGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-6);
-  max-width: 640px;
-  margin-inline: auto;
+  gap: var(--space-4);
+  list-style: none;
 }
 
-@media (min-width: 640px) {
-  .teamGrid { grid-template-columns: repeat(3, 1fr); }
+@media (min-width: 900px) {
+  .teamGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-5);
+  }
 }
 
 .memberCard {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-8) var(--space-4);
+  gap: var(--space-4);
+  padding: var(--space-8) var(--space-5);
   border: 1px solid var(--color-chalk);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   text-align: center;
-  transition: border-color var(--ease-fast), box-shadow var(--ease-fast);
+  background-color: var(--color-ivory);
+  transition:
+    border-color var(--ease-fast),
+    box-shadow var(--ease-fast),
+    transform var(--ease-fast);
 }
 
-.memberCard:hover { border-color: var(--color-gold); box-shadow: var(--shadow-sm); }
+.memberCard:hover {
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
 
-.avatar {
-  width: 56px;
-  height: 56px;
+/* Avatar */
+.memberAvatarWrap {
+  position: relative;
+}
+
+.memberAvatar {
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
-  background-color: var(--color-obsidian);
+  background: linear-gradient(
+    135deg,
+    var(--color-obsidian) 0%,
+    oklch(0.22 0.008 62) 100%
+  );
   color: var(--color-ivory);
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.625rem;
   font-weight: 300;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  border: 2px solid var(--color-gold);
+  letter-spacing: 0.05em;
+  box-shadow: 0 0 0 4px oklch(0.64 0.12 68 / 0.08);
+  transition: box-shadow var(--ease-fast);
+}
+
+.memberCard:hover .memberAvatar {
+  box-shadow: 0 0 0 6px oklch(0.64 0.12 68 / 0.15);
+}
+
+/* Info */
+.memberInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
 }
 
 .memberName {
   font-family: var(--font-body);
-  font-size: 0.9375rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--color-obsidian);
 }
 
 .memberRole {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
+  color: var(--color-gold);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Expertise tags */
+.memberTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  justify-content: center;
+}
+
+.memberTag {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--color-stone);
-  line-height: 1.5;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-chalk);
+  border-radius: var(--radius-full);
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+
+/* Social links */
+.memberSocial {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.socialBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-stone);
+  background-color: var(--color-white);
+  border: 1.5px solid var(--color-chalk);
+  text-decoration: none;
+  transition: color var(--ease-fast), border-color var(--ease-fast), background-color var(--ease-fast);
+}
+
+.socialBtn:hover {
+  color: var(--color-ivory);
+  background-color: var(--color-obsidian);
+  border-color: var(--color-obsidian);
 }
 
 /* ── CTA ── */
@@ -356,6 +466,19 @@
   color: var(--color-ivory);
 }
 
+@media (max-width: 640px) {
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .memberCard {
+    padding: var(--space-6) var(--space-4);
+  }
+  .memberTags {
+    display: none; /* hide on mobile to save space */
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .memberCard:hover { transform: none; }
   .ctaButton:hover { transform: none; }
 }
