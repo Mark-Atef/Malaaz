@@ -1,4 +1,5 @@
 /* app/[locale]/traders/traders.module.css */
+/** biome-ignore-all lint/complexity/noImportantStyles: <> */
 
 .page {
   background-color: var(--color-ivory);

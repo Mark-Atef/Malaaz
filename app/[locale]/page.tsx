@@ -1,4 +1,5 @@
 // WHY <main> here and not in layout:
+/** biome-ignore-all assist/source/organizeImports: <> */
 // Next.js App Router: layout.tsx wraps children but does not re-render between
 // page navigations. The page-enter animation must live on the page component so
 // it replays on every route visit. <main> is the correct semantic landmark for

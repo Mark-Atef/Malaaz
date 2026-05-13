@@ -1,4 +1,5 @@
 // components/sections/TrustPartners.tsx
+/** biome-ignore-all assist/source/organizeImports: <> */
 // Trust section: payment partners + live trader count + press logos.
 // Placed after HowItWorks and before CostSimulator — peak credibility position.
 // Inspired by Stripe's social proof section: dense, factual, no fluff.

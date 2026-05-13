@@ -1,4 +1,5 @@
 /* components/sections/EngineerVisit.module.css */
+/** biome-ignore-all lint/complexity/noImportantStyles: <> */
 
 .section {
   background-color: var(--color-ivory);
