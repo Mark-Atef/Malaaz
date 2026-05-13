@@ -505,6 +505,11 @@
   border-color: var(--color-gold);
   color: var(--color-ivory);
   transform: translateY(-1px);
+} 
+
+@media (prefers-reduced-motion: reduce) {
+  .pricingCta:hover,
+  .pricingCtaDark:hover { transform: none; }
 }
 
 /* Gold orb inside distributor card */
