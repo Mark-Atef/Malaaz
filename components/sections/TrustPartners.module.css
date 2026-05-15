@@ -7,6 +7,12 @@
   border-bottom: 1px solid var(--color-chalk);
 }
 
+.section h2 {
+  text-align: center;
+  margin: var(--space-10);
+  font-size: var(--space-10);
+}
+
 /* ── Stats row ── */
 .statsRow {
   display: flex;
@@ -205,6 +211,25 @@
   height: 1px;
   background-color: var(--color-chalk);
   margin-block: var(--space-2);
+}
+
+
+/* Remove default list styling — we're using semantic ul/li now */
+.statPills,
+.partners,
+.pressRow {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.statPillItem {
+  display: contents; /* li wraps StatPill without adding layout box */
+}
+
+.partners li,
+.pressRow li {
+  display: contents; /* li wraps child without adding layout box */
 }
 
 /* ── Mobile ── */
